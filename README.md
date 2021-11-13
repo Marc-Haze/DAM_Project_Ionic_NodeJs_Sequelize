@@ -37,6 +37,7 @@ Now that we own the Backend & Frontend folders, we can check the Prototype in fr
 
 I recommend using JustInMind to visualize it properly, but here are some example:
 
-![Imagen](https://imgur.com/klz2xtw)
+![allviews](https://user-images.githubusercontent.com/91074603/141653462-8a9684d4-ce77-48d7-92e2-05fc70a846e6.PNG)
+
 
 
