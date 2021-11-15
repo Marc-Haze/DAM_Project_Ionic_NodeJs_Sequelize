@@ -1,38 +1,37 @@
 const db = require("../models");
 const Employee = db.employee;
+const User = db.user;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Ship
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.id) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
-
-  // Create an Employee
-  const employee = {
-    id: req.body.id,
-    name: req.body.name,
-    email: req.body.email,
-    telephone: req.body.telephone,
-    addres: req.body.addres,
-    job: req.body.job,
-  };
-
-  // Save Employee in the database
-  Employee.create(ship)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Employee."
+    // Create an Employee
+    const employee = {
+      name: req.body.name,
+      email: req.body.email,
+      telephone: req.body.telephone,
+      address: req.body.address,
+      job: req.body.job,
+    };
+    // Save Employee in the database
+     Employee.create(employee)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Employee."
+        });
       });
-    });
+
 };
 
 // Retrieve all Employees from the database.

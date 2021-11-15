@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Ship
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.id) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,7 +14,6 @@ exports.create = (req, res) => {
 
   // Create a Ship
   const ship = {
-    id: req.body.id,
     name: req.body.name,
     type: req.body.type,
     client: req.body.client

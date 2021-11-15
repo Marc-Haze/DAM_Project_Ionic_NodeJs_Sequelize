@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   user.init({
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    isAdmin: DataTypes.TINYINY,
-    darkMode: DataTypes.TINYINY,
+    isAdmin: DataTypes.TINYINT,
+    darkMode: DataTypes.TINYINT,
     employeeId: DataTypes.INTEGER,
   }, {
     sequelize,

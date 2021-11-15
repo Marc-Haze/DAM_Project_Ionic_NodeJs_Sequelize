@@ -18,5 +18,5 @@ module.exports = app => {
     // Delete a Ship with id
     router.delete("/:id", maintenances.delete);
   
-    app.use('/api/maintenance', router);
+    app.use('/api/maintenances', router);
   };

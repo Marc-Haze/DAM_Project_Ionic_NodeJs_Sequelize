@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Maintenance
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.id) {
+  if (!req.body.service) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,7 +14,6 @@ exports.create = (req, res) => {
 
   // Create a Ship
   const maintenance = {
-    id: req.body.id,
     service: req.body.service,
     state: req.body.state,
     description: req.body.description,
@@ -23,7 +22,7 @@ exports.create = (req, res) => {
   };
 
   // Save Maintenance in the database
-  Maintenance.create(ship)
+  Maintenance.create(maintenance)
     .then(data => {
       res.send(data);
     })
