@@ -11,8 +11,10 @@ function generateToken(user) {
   var u = {
     id: user.id,
     username: user.username,
+    password: user.password,
     isAdmin: user.isAdmin,
-    password: user.password
+    darkMode: user.darkMode,
+    
   };
  
   // .env should contain a line like JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
@@ -28,8 +30,9 @@ function getCleanUser(user) {
   return {
     id: user.id,
     username: user.username,
-    isAdmin: user.isAdmin,
     password: user.password,
+    isAdmin: user.isAdmin,
+    darkMode: user.darkMode,
   };
 }
  

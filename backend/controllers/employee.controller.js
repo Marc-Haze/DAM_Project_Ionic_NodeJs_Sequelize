@@ -1,4 +1,5 @@
 const db = require("../models");
+const user = require("../models/user");
 const Employee = db.employee;
 const User = db.user;
 const Op = db.Sequelize.Op;
@@ -6,14 +7,14 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Ship
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.name) {
+  if (!req.body.name || !req.body.email || !req.body.job) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
     // Create an Employee
-    const employee = {
+    const employee = { 
       name: req.body.name,
       email: req.body.email,
       telephone: req.body.telephone,
@@ -36,7 +37,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Employees from the database.
 exports.findAll = (req, res) => {
-  Employee.findAll()
+  Employee.findAll( {include: [{model: User, required: false}]} )
     .then(data => {
       res.send(data);
     })
@@ -52,7 +53,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Employee.findByPk(id)
+  Employee.findByPk(id, {include: [{model: User, required: false}]})
     .then(data => {
       res.send(data);
     })

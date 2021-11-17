@@ -1,0 +1,40 @@
+ion-content{
+  --background: linear-gradient(to bottom left, #072355 60%,#6c8eac) !important;
+}
+
+#containerImage {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+#containerLogIn {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#containerInfo {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 70%;
+  transform: translateY(-50%);
+}
+
+.button{
+  text-align: center;
+  font-size: 150%;
+  font-style: oblique;
+  font-weight: bold;
+  
+}
+
+

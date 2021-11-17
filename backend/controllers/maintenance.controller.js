@@ -1,11 +1,13 @@
 const db = require("../models");
 const Maintenance = db.maintenance;
+const Employee = db.employee;
+const Ship = db.ship;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Maintenance
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.service) {
+  if (!req.body.service || !req.body.state || !req.body.dock) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -19,6 +21,8 @@ exports.create = (req, res) => {
     description: req.body.description,
     dock: req.body.dock,
     note: req.body.note,
+    shipId: req.body.shipId,
+    employeeId: req.body.employeeId
   };
 
   // Save Maintenance in the database
@@ -36,7 +40,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Maintenances from the database.
 exports.findAll = (req, res) => {
-    Maintenance.findAll()
+    Maintenance.findAll( {include: [{model: Ship, as:"ship",  required:false}]} )
     .then(data => {
       res.send(data);
     })

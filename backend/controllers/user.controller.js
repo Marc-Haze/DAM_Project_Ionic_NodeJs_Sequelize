@@ -3,6 +3,7 @@ const User = db.user;
 const Op = db.Sequelize.Op;
 const utils = require("../utils");
 const  bcrypt  =  require('bcryptjs');
+const Employee = db.employee;
 
 // Create and Save a new User
 exports.create = (req, res) => {
@@ -66,7 +67,7 @@ exports.create = (req, res) => {
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
 
-  User.findAll()
+  User.findAll( {include: [{model: Employee, as:"employee", required: false}]} )
     .then(data => {
       res.send(data);
     })
@@ -82,7 +83,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  User.findByPk(id)
+  User.findByPk(id, {include: [{model: Employee, as:"employee", required: false}]} )
     .then(data => {
       res.send(data);
     })

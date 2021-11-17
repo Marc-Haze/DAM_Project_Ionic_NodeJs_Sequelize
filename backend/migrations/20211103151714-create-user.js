@@ -18,15 +18,15 @@ module.exports = {
       },
       isAdmin: {
         allowNull: false,
-        type: Sequelize.TINYINT
+        type: Sequelize.BOOLEAN
       },
       darkMode: {
         allowNull: false,
-        type: Sequelize.TINYINT
+        type: Sequelize.BOOLEAN
       },
       employeeId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
              model: 'employees',
              key: 'id'
