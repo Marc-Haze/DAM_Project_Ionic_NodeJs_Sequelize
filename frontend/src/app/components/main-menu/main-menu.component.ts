@@ -7,11 +7,13 @@ import { MenuController } from '@ionic/angular';
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss'],
 })
-export class MainMenuComponent implements OnInit {
+export class MainMenuComponent {
 
   constructor(private menu: MenuController, private router: Router) { }
 
-  ngOnInit() {}
+  goToHome(){
+    this.router.navigateByUrl("/home");
+  }
 
   openFirst() {
     this.menu.enable(true, 'first');
@@ -25,9 +27,5 @@ export class MainMenuComponent implements OnInit {
   openCustom() {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
-  }
-
-  goToHome(){
-    this.router.navigateByUrl("/home");
   }
 }

@@ -3,14 +3,33 @@ ion-content{
 }
 
 ion-item{
-    --background: #3880ff;
+    --background: #344C8B;
     --color: #fff;
 }
 
 ion-button{
-    --background: #062f77;
+    --background: #4B5D95;
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 150%;
 }
 
+.username-input{
+    margin-top: 10%;
+}
+.password-input{
+    margin-top: 10%;
+}
 a{
     color: #fff;
+    font-weight: bold;
+}
+
+#title{
+    text-align: center;
+    text-decoration: underline;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 300%;
+    color: #fff;
+    margin-top: 10%;
 }

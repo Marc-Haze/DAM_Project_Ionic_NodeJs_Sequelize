@@ -29,12 +29,13 @@ ion-content{
   transform: translateY(-50%);
 }
 
-.button{
+ion-button{
   text-align: center;
   font-size: 150%;
   font-style: oblique;
   font-weight: bold;
-  
+  --background: #4B5D95;
+  // linear-gradient(to bottom top, #4B5D95 30%,#74A6D2)
 }
 
 

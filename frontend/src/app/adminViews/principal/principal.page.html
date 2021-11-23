@@ -1,0 +1,69 @@
+<ion-header>
+  <app-main-menu></app-main-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-header>
+
+<!-- Slider Menu dragged from main-menu ->(ion-menu-button is inside) -->
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title id="titleMenu">Administración</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="menu-content">
+    <ion-list>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="loginOrJustEnter()" fill="clear" color="tertiary" strong="true">
+          Principal</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToEmployees()" fill="clear" color="dark" strong="true">Empleados
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToShips()" fill="clear" color="dark" strong="true">Barcos
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToMaintenances()" fill="clear" color="dark" strong="true">
+          Reparaciones</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToUsers()" fill="clear" color="dark" strong="true">Usuarios
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToConfig()" fill="clear" color="dark" strong="true">Configuración
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="logout()" fill="clear" color="dark" strong="true">Desconectarse
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Main Content -->
+<ion-content>
+  <ion-title id="title">Administración</ion-title>
+  <ion-button class="upper-button" shape="round" (click)="goToEmployees()">Empleados<ion-icon
+      name="finger-print-outline"></ion-icon>
+  </ion-button>
+  <ion-button class="upper-button" shape="round" (click)="goToShips()">Naves<ion-icon name="boat-outline"></ion-icon>
+  </ion-button>
+  <ion-button class="upper-button" shape="round" (click)="goToMaintenances()">Reparaciones<ion-icon
+      name="construct-outline"></ion-icon>
+  </ion-button>
+  <ion-button class="upper-button" shape="round" (click)="goToUsers()">Usuarios<ion-icon name="person-outline">
+    </ion-icon>
+  </ion-button>
+
+
+  <ion-button (click)="goToConfig()" class="config-button" shape="round">
+    <ion-icon name="cog-outline"></ion-icon>
+  </ion-button>
+  <ion-button (click)="logout()" class="exit-button" shape="round">
+    <ion-icon name="log-out-outline"></ion-icon>
+  </ion-button>
+</ion-content>

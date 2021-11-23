@@ -1,3 +1,20 @@
 ion-content{
-    --background: linear-gradient(to bottom left, #072355 60%,#6c8eac) !important;
-  }
+    --background: linear-gradient(to bottom left, #072355 60%,#6c8eac);
+}
+#titleContainer{
+  color: #072355;
+}
+#title{
+  text-align: center;
+  font-size: 180%;
+  font-weight: bold;
+  color: #fff;
+  // text-decoration: underline;
+  margin-top: 5%;
+}
+  
+#titleMenu{
+  text-align: center;
+  font-size: 150%;
+  font-weight: bold;
+}
