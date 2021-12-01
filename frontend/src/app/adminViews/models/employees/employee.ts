@@ -5,6 +5,7 @@ export class Employee {
     telephone: number;
     address: string;
     job: string;
+    filename: string;
     user: {
         id: number;
         password: string;
@@ -20,5 +21,6 @@ export class Employee {
         this.telephone=0;
         this.address="";
         this.job="";
+        this.filename="";
     }
 }

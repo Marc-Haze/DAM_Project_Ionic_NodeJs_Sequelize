@@ -21,7 +21,8 @@ exports.create = (req, res) => {
     username: req.body.username,
     isAdmin: req.body.isAdmin ? req.body.isAdmin : false,
     darkMode: req.body.darkMode,
-    employeeId: req.body.employeeId
+    employeeId: req.body.employeeId,
+    filename: req.file.filename
   };
 
   User.findOne({ where: { username: user.username } })

@@ -1,12 +1,18 @@
 ion-content{
   --background: linear-gradient(to bottom left, #072355 60%,#6c8eac);
-  
+  margin-top: 30%;
+}
+
+ion-searchbar{
+  width: 70%;
+  float: right;
+  margin-right: 1%;
 }
 
 ion-card{
-  margin-left: 10%;
-  width: 65%;
-  height: 25%;
+  margin-left: 15%;
+  width: 70%;
+  height: 30%;
   background: #1d222e;
   text-align: center;
 }
@@ -33,9 +39,10 @@ ion-icon{
 }
 #containerTitle{
   background-color: #072355;
-  padding-bottom: 1%;
+  // padding-bottom: 15%;
   
 }
+
 #title{
   text-align: center;
   font-size: 150%;
@@ -50,4 +57,14 @@ ion-icon{
   text-align: center;
   font-size: 150%;
   font-weight: bold;
+}
+
+#addButton{
+  width: 20%;
+  color: #072355;
+}
+
+ion-img{
+  margin-left: 30%;
+  width:40%;
 }

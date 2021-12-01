@@ -68,6 +68,8 @@ require("./routes/ship.routes")(app);
 require("./routes/employee.routes")(app);
 require("./routes/maintenance.routes")(app);
 
+app.use(express.static(__dirname + '/public/images'));
+
 
 app.listen(port, () => {
   console.log('Server started on: ' + port);

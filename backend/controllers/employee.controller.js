@@ -20,7 +20,9 @@ exports.create = (req, res) => {
       telephone: req.body.telephone,
       address: req.body.address,
       job: req.body.job,
+      filename: req.file.filename,
     };
+    
     // Save Employee in the database
      Employee.create(employee)
       .then(data => {

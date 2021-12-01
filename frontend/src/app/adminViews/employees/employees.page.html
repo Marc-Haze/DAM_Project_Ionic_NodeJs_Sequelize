@@ -47,20 +47,26 @@
 <!-- Main Content -->
 <div id="containerTitle">
   <ion-title id="title">Administrar Empleados</ion-title>
-</div>
+  <ion-button id="addButton" shape="round" color="success" (click)="addEmployee()">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-button>
+  <ion-searchbar showCancelButton="focus" (ionChange)="setSearchInput($event)"></ion-searchbar>
+</div> 
 
 <ion-content>
-
-  <ion-card *ngFor="let employee of employees">
-    <ion-card-header>
-      <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
-      <ion-card-title>{{employee.name}}</ion-card-title>
-      <ion-button class="modButton" shape="round" color="warning">
-        <ion-icon name="brush-outline"></ion-icon>
-      </ion-button>
-      <ion-button class="deleteButton" shape="round" color="danger">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-card-header>
-  </ion-card>
+  <div *ngFor="let employee of employees">
+    <ion-card *ngIf="employee.name.toLowerCase().indexOf(getSearchInput()) != -1">
+      <ion-card-header>
+        <ion-img src="http://localhost:4000/{{employee.filename}}"></ion-img>
+        <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
+        <ion-card-title>{{employee.name}}</ion-card-title>  
+        <ion-button class="modButton" shape="round" color="warning" (click)="modEmployee(employee)">
+          <ion-icon name="brush-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="deleteButton" shape="round" color="danger" (click)="deleteEmployee(employee.id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-card-header>
+    </ion-card>
+  </div>
 </ion-content>

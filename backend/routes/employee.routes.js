@@ -1,10 +1,12 @@
 module.exports = app => {
     const employees = require("../controllers/employee.controller.js");
+    const auth = require("../controllers/auth.controller.js");
   
     var router = require("express").Router();
+    var upload = require('../multer/upload');
   
     // Create a new Employee
-    router.post("/", employees.create);
+    router.post("/", upload.single('file'), employees.create);
   
     // Retrieve all Employees
     router.get("/", employees.findAll);
@@ -13,7 +15,7 @@ module.exports = app => {
     router.get("/:id", employees.findOne);
   
     // Update an Employee with id
-    router.put("/:id", employees.update);
+    router.put("/:id", upload.single('file'), employees.update);
   
     // Delete an Employee with id
     router.delete("/:id", employees.delete);

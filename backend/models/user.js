@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN,
     darkMode: DataTypes.BOOLEAN,
+    filename: DataTypes.STRING,
     employeeId: DataTypes.INTEGER,
   }, {
     sequelize,

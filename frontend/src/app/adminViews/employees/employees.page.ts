@@ -11,6 +11,8 @@ import { EmployeesService } from '../models/employees/employees.service';
 })
 export class EmployeesPage implements OnInit {
 
+  public search: string = "";
+  
   public employees: Array<Employee> = [];
   public employee: Employee;
 
@@ -20,28 +22,48 @@ export class EmployeesPage implements OnInit {
     this.loadInfo();
   }
 
-   // Administration Routes
-   goToEmployees(){
+  // Administration Routes
+  goToEmployees() {
     this.router.navigateByUrl("/employees");
   }
-  goToShips(){
+  goToShips() {
     this.router.navigateByUrl("/ships");
   }
-  goToMaintenances(){
+  goToMaintenances() {
     this.router.navigateByUrl("/maintenances");
   }
-  goToUsers(){
+  goToUsers() {
     this.router.navigateByUrl("/users");
   }
-  goToConfig(){
+  goToConfig() {
     this.router.navigateByUrl("/user-config");
   }
 
   //Employee Services
   loadInfo() {
-    this.employeeServices.getAllEmployees().subscribe((b: Array<Employee>) =>{
+    this.employeeServices.getAllEmployees().subscribe((b: Array<Employee>) => {
       this.employees = b;
     })
+  }
+
+  deleteEmployee(idEmployee: number) {
+    this.employeeServices.deleteEmployee(idEmployee).subscribe(() => {
+      this.loadInfo();
+    });
+  }
+
+  modEmployee() {
+    this.router.navigateByUrl("/mod-employee");
+  }
+
+  //Search Fnctions
+  setSearchInput(event){
+    console.log(event.detail.value);
+    this.search = event.detail.value;
+  }
+
+  getSearchInput(){
+    return this.search;
   }
 
 
@@ -57,7 +79,7 @@ export class EmployeesPage implements OnInit {
     })
   }
 
-  logout(){
+  logout() {
     this.authService.logout().then(() => {
       this.router.navigateByUrl("/home");
     });

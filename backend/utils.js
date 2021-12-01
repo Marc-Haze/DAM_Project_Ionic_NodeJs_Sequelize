@@ -13,6 +13,7 @@ function generateToken(user) {
     username: user.username,
     password: user.password,
     isAdmin: user.isAdmin,
+    filename: user.filename,
     darkMode: user.darkMode,
     
   };
@@ -32,6 +33,7 @@ function getCleanUser(user) {
     username: user.username,
     password: user.password,
     isAdmin: user.isAdmin,
+    filename: user.filename,
     darkMode: user.darkMode,
   };
 }
