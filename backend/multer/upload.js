@@ -5,6 +5,7 @@ var storage = multer.diskStorage({
       cb(null, './public/images');
     },
     filename: (req, file, cb) => {
+      console.log("Comprobando El Fichero Subido");
       console.log(file);
       var filetype = '';
       if(file.mimetype === 'image/gif') {
@@ -21,5 +22,6 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({storage: storage});
+
 
 module.exports = upload;

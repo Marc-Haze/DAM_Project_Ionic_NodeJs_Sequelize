@@ -5,7 +5,8 @@ const User = db.user;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Ship
-exports.create = (req, res) => {
+exports.create = (req, res) => { 
+  console.log(req);
   // Validate request
   if (!req.body.name || !req.body.email || !req.body.job) {
     res.status(400).send({
@@ -20,7 +21,7 @@ exports.create = (req, res) => {
       telephone: req.body.telephone,
       address: req.body.address,
       job: req.body.job,
-      filename: req.file.filename,
+      filename: req.file.filename || 'localhost:4000/predetermined.png',
     };
     
     // Save Employee in the database
@@ -69,8 +70,20 @@ exports.findOne = (req, res) => {
 // Update an Employee by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
+  console.log(req);
 
-  Employee.update(req.body, {
+  // Create an Employee
+  const employee = { 
+    name: req.body.name,
+    email: req.body.email,
+    telephone: req.body.telephone,
+    address: req.body.address,
+    job: req.body.job,
+    // Por si no cambias la foto, te mantiene la anterior <3
+    filename: req.file.filename || req.body.filename,
+  };
+
+  Employee.update(employee, {
     where: { id: id }
   })
     .then(num => {

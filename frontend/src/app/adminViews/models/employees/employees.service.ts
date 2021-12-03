@@ -12,6 +12,10 @@ const httpOptionsUsingUrlEncoded = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
 };
 
+const hhtpOptionsUsingFormData ={
+  headers: new HttpHeaders({ 'enctype': 'multipart/form-data; boundary=----WebKitFormBoundaryuL67FWkv1CA'})
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,19 +37,23 @@ export class EmployeesService {
     return this.httpClient.delete<Employee>(this.endpoint + "/" + id);
   }
 
-  createEmployee(employee: Employee): Observable<Employee>{
-    let bodyEncoded = new URLSearchParams();
+  createEmployee(employee: Employee, file: File): Observable<Employee>{
+
+    let bodyEncoded = new FormData();
+    // let bodyEncoded = new URLSearchParams();
     bodyEncoded.append("name", employee.name);
     bodyEncoded.append("email", employee.email);
     bodyEncoded.append("telephone", employee.telephone.toString());
     bodyEncoded.append("address", employee.address);
     bodyEncoded.append("job", employee.job);
-    bodyEncoded.append("filename", employee.filename);
+    console.log("Comprobando el Contenido de Employee.File");
+    console.log(employee);
+    bodyEncoded.append("file", file);
 
-    const body = bodyEncoded.toString();
+    // const body = bodyEncoded.toString();
     console.log("Creating Employee...")
     console.log(JSON.stringify(employee))
-    return this.httpClient.post<Employee>(this.endpoint, body, httpOptionsUsingUrlEncoded)
+    return this.httpClient.post<Employee>(this.endpoint, bodyEncoded, hhtpOptionsUsingFormData)
     .pipe(
       tap(employee => console.log('Employee created!')),
       catchError(this.handleError<Employee>('Error occured creating Employee'))
@@ -59,7 +67,7 @@ export class EmployeesService {
     bodyEncoded.append("telephone", employee.telephone.toString());
     bodyEncoded.append("address", employee.address);
     bodyEncoded.append("job", employee.job);
-    bodyEncoded.append("filename", employee.filename);
+    bodyEncoded.append("filename", employee.file.toString());
     
 
     const body = bodyEncoded.toString();

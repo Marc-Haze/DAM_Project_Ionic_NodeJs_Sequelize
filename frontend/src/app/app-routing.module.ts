@@ -54,7 +54,23 @@ const routes: Routes = [
   {
     path: 'user-config',
     loadChildren: () => import('./adminViews/user-config/user-config.module').then( m => m.UserConfigPageModule)
+  },  {
+    path: 'add-employee',
+    loadChildren: () => import('./adminViews/addViews/add-employee/add-employee.module').then( m => m.AddEmployeePageModule)
   },
+  {
+    path: 'add-user',
+    loadChildren: () => import('./adminViews/addViews/add-user/add-user.module').then( m => m.AddUserPageModule)
+  },
+  {
+    path: 'add-ship',
+    loadChildren: () => import('./adminViews/addViews/add-ship/add-ship.module').then( m => m.AddShipPageModule)
+  },
+  {
+    path: 'add-maintenance',
+    loadChildren: () => import('./adminViews/addViews/add-maintenance/add-maintenance.module').then( m => m.AddMaintenancePageModule)
+  },
+
 
 
 ];

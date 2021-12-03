@@ -4,12 +4,13 @@ export class Employee {
     email: string;
     telephone: number;
     address: string;
+    file: File;
     job: string;
-    filename: string;
     user: {
         id: number;
         password: string;
         username: string;
+        filename: string;
         isAdmin: boolean;
         darkMode: boolean;
     };
@@ -21,6 +22,6 @@ export class Employee {
         this.telephone=0;
         this.address="";
         this.job="";
-        this.filename="";
+        this.file=null;
     }
 }

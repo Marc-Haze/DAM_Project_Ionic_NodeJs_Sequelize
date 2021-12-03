@@ -46,27 +46,54 @@
 
 <!-- Main Content -->
 <div id="containerTitle">
-  <ion-title id="title">Administrar Empleados</ion-title>
-  <ion-button id="addButton" shape="round" color="success" (click)="addEmployee()">
-    <ion-icon name="add-outline"></ion-icon>
-  </ion-button>
-  <ion-searchbar showCancelButton="focus" (ionChange)="setSearchInput($event)"></ion-searchbar>
-</div> 
+  <ion-title id="title">Nuevo Empleado</ion-title>
+</div>
 
 <ion-content>
-  <div *ngFor="let employee of employees">
-    <ion-card *ngIf="employee.name.toLowerCase().indexOf(getSearchInput()) != -1 || employee.job.toLowerCase().indexOf(getSearchInput()) != -1">
-      <ion-card-header>
-        <ion-img src="http://localhost:4000/{{employee.filename}}" (click)="fullView(employee)"></ion-img>
-        <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
-        <ion-card-title (click)="fullView(employee)">{{employee.name}}</ion-card-title>  
-        <ion-button class="modButton" shape="round" color="warning" (click)="modEmployee(employee)">
-          <ion-icon name="brush-outline"></ion-icon>
-        </ion-button>
-        <ion-button class="deleteButton" shape="round" color="danger" (click)="deleteEmployee(employee.id)">
-          <ion-icon name="trash-outline"></ion-icon>
-        </ion-button>
-      </ion-card-header>
-    </ion-card> 
-  </div>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <label for="name">FOTITO PAL INSTA:</label>
+      <input type="file" formControlName="file" (change)="fileChange($event)"/>
+    </div>
+
+    <div class="row">
+      <label for="name">*Nombre Completo:</label>
+      <input type="text" formControlName="name" />
+    </div>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+      Este campo es obligatorio
+    </span>
+
+    <div class="row">
+      <label for="email">*Dirección Email: </label>
+      <input type="email" formControlName="email"/>
+    </div>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.email.errors?.required">
+      Este campo es obligatorio
+    </span>
+
+    <div class="row">
+      <label for="telephone">Teléfono: </label>
+      <input type="tel" formControlName="telephone"/>
+    </div>
+
+    <div class="row">
+      <label for="address">Dirección Postal: </label>
+      <input type="text" formControlName="address"/>
+    </div>
+
+    <div class="row">
+      <label for="job">*Oficio: </label>
+      <input type="text" formControlName="job"/>
+    </div>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.job.errors?.required">
+      Este campo es obligatorio
+    </span>
+    
+    <ion-button id="addButton" color="success" (click)="onSubmit()">Añadir</ion-button>
+    <ion-button id="cancelButton" color="danger" (click)="loginOrJustEnter()">Cancelar</ion-button>
+
+  </form>
+  
 </ion-content>

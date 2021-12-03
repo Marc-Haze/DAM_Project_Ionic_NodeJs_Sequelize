@@ -1,18 +1,67 @@
 ion-content{
-    --background: linear-gradient(to bottom left, #072355 60%,#6c8eac);
-  }
+  --background: linear-gradient(to bottom left, #072355 60%,#6c8eac);
+  margin-top: 30%;
+}
+
+
+#containerTitle{
+  background-color: #072355;
+  // padding-bottom: 15%;
+  
+}
 
 #title{
   text-align: center;
-  font-size: 170%;
+  font-size: 150%;
   font-weight: bold;
   color: #fff;
   // text-decoration: underline;
   margin-top: 5%;
+  position: relative;
 }
 
 #titleMenu{
   text-align: center;
   font-size: 150%;
   font-weight: bold;
+}
+
+#addButton{
+  width: 20%;
+  color: #072355;
+}
+
+ion-searchbar{
+  width: 70%;
+  float: right;
+  margin-right: 1%;
+}
+
+ion-card{
+  margin-left: 15%;
+  width: 70%;
+  height: 30%;
+  background: #1d222e;
+  text-align: center;
+}
+
+ion-card-title{
+  color: #fff;
+}
+
+ion-card-subtitle{
+  color: rgba(255, 255, 255, 0.651);
+}
+ion-fab-button{
+  color: rgb(67, 175, 130);
+
+}
+
+ion-button{
+  width: 40%;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+ion-icon{
+  color: #000000;
 }

@@ -11,6 +11,7 @@ import { EmployeesService } from '../models/employees/employees.service';
 })
 export class EmployeesPage implements OnInit {
 
+  // String used to catch the Event in the searchbar and use it to filter the 
   public search: string = "";
   
   public employees: Array<Employee> = [];
@@ -39,7 +40,7 @@ export class EmployeesPage implements OnInit {
     this.router.navigateByUrl("/user-config");
   }
 
-  //Employee Services
+  //Employee Services and Routes
   loadInfo() {
     this.employeeServices.getAllEmployees().subscribe((b: Array<Employee>) => {
       this.employees = b;
@@ -52,11 +53,15 @@ export class EmployeesPage implements OnInit {
     });
   }
 
+  addEmployee(){
+    this.router.navigateByUrl("/add-employee");
+  }
+
   modEmployee() {
     this.router.navigateByUrl("/mod-employee");
   }
 
-  //Search Fnctions
+  //Search-Bar Functions
   setSearchInput(event){
     console.log(event.detail.value);
     this.search = event.detail.value;

@@ -17,11 +17,11 @@
           Principal</ion-button>
       </ion-item>
       <ion-item>
-        <ion-button class="menubuttons" (click)="goToEmployees()" fill="clear" color="dark" strong="true">Empleados
+        <ion-button class="menubuttons" (click)="goToEmployees()" fill="clear" color="tertiary" strong="true">Empleados
         </ion-button>
       </ion-item>
       <ion-item>
-        <ion-button class="menubuttons" (click)="goToShips()" fill="clear" color="tertiary" strong="true">Barcos
+        <ion-button class="menubuttons" (click)="goToShips()" fill="clear" color="dark" strong="true">Barcos
         </ion-button>
       </ion-item>
       <ion-item>
@@ -44,30 +44,41 @@
   </ion-content>
 </ion-menu>
 
-
 <!-- Main Content -->
 <div id="containerTitle">
-  <ion-title id="title">Administrar Navíos</ion-title>
-  <ion-button id="addButton" shape="round" color="success" (click)="addShip()">
-    <ion-icon name="add-outline"></ion-icon>
-  </ion-button>
-  <ion-searchbar showCancelButton="focus" (ionChange)="setSearchInput($event)"></ion-searchbar>
-</div> 
+  <ion-title id="title">Nuevo Barco</ion-title>
+</div>
 
 <ion-content>
-  <div *ngFor="let ship of ships">
-    <ion-card *ngIf="ship.name.toLowerCase().indexOf(getSearchInput()) != -1 || ship.type.toLowerCase().indexOf(getSearchInput()) != -1 || ship.client.toLowerCase().indexOf(getSearchInput()) != -1">
-      <ion-card-header>
-        <ion-card-subtitle>{{ship.type}}</ion-card-subtitle>
-        <ion-card-subtitle>{{ship.client}}</ion-card-subtitle>
-        <ion-card-title>{{ship.name}}</ion-card-title>  
-        <ion-button class="modButton" shape="round" color="warning" (click)="modShip(ship)">
-          <ion-icon name="brush-outline"></ion-icon>
-        </ion-button>
-        <ion-button class="deleteButton" shape="round" color="danger" (click)="deleteShip(ship.id)">
-          <ion-icon name="trash-outline"></ion-icon>
-        </ion-button>
-      </ion-card-header>
-    </ion-card> 
-  </div>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <label for="name">*Nombre de la Nave:</label>
+      <input type="text" formControlName="name" />
+    </div>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+      Este campo es obligatorio
+    </span>
+
+    <div class="row">
+      <label for="email">*Tipo de Barco: </label>
+      <input type="text" formControlName="type"/>
+    </div>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.email.errors?.required">
+      Este campo es obligatorio
+    </span>
+
+    <div class="row">
+      <label for="telephone">*Cliente: </label>
+      <input type="text" formControlName="client"/>
+    </div>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.email.errors?.required">
+      Este campo es obligatorio
+    </span>
+
+    
+    <ion-button id="addButton" color="success" (click)="onSubmit()">Añadir</ion-button>
+    <ion-button id="cancelButton" color="danger" (click)="loginOrJustEnter()">Cancelar</ion-button>
+  </form>
+  
 </ion-content>
