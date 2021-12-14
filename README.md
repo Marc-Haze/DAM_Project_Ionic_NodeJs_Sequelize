@@ -4,10 +4,18 @@ A FullStack implementation of a Database using MYSQL, Sequelize as ORM, REST, an
 
 ## Introduction
 
-### User Requisites
+App made for Astican, a shipyard specialized in maintenances for international and national clients with large dimension ships. Astican has many problems trying to get real time information from their employees, ships and maintenaces, and they need a fast conection between the organization and their workers. 
+
+This App is made to resolve this problem, giving an administrator the capacity to 
+
+## Diagrams 
+
+![UseCaseDiagram](https://user-images.githubusercontent.com/91074603/146034774-f1defe31-0bdd-4c13-953f-2615f7fd255d.png)
+
+## User Requisites
 
 
-### Prerequisites
+## Instaling Prerequisites
 
 ·[NodeJs]: https://nodejs.org/es/download/
 
