@@ -25,7 +25,7 @@ The App is used in two sides:
 
 Administrators will create, upgrade and delete any registries from the DB and so deploy a worker on a maintenance for a ship, being the first and final part of the organization.
 
-![ERDiagram](https://user-images.githubusercontent.com/91074603/146038301-941cf8f3-484d-4171-a0e9-58cc3e8785f7.png)
+![ERDiagram](https://user-images.githubusercontent.com/91074603/146038644-a4a485ac-9199-456e-b628-3a8f5d676337.png)
 
 
 ## User Requisites
