@@ -106,15 +106,30 @@ And so we need a DB called "db_astican" that can be get from "backend/database/d
 
     backend/ $ sequelize db:migrate
 
-It will create the 
+It will create the DB without data. To log in and start using the administration routes we will need an administrator user that can be created manually into the DB or using Postman. My collection, wich i used to check the database conection and routes, can be seen in my publish:
+
+    https://documenter.getpostman.com/view/17625230/UVR7L8iQ
+
+I recommend using the demo data in "backend/database/db_astican.sql".
+
+## Starting the App
+
+A simple task. Just start the backend server and then frontend server using these comands:
+
+    backend/ $ npm start
+    frontend/ $ ionic serve --lab
+
+Check http://localhost:8200 to enter the mobile app.
 
 ## Using the App (Usability)
 
-Now that we own the Backend & Frontend folders, we can check the Prototype in frontend\Prototype\MobPrototype_Astican.vp 
+Now that we own the Backend & Frontend folders and are already started, we can check the Prototype in frontend\Prototype\MobPrototype_Astican.vp 
 
 I recommend using JustInMind to visualize it properly, but here are some example:
 
 ![allviews](https://user-images.githubusercontent.com/91074603/141653462-8a9684d4-ce77-48d7-92e2-05fc70a846e6.PNG)
 
 
+Once we get into the App, we will start at the home page, a simple but a usefull view that already opens two paths for common users and employee users.
 
+![HomeView](https://user-images.githubusercontent.com/91074603/146051500-f27220c4-6b0a-4e78-acc0-b396ab2382bb.png)
