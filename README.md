@@ -146,6 +146,30 @@ As we can see, the App uses just the necesary elements in all their pages, makin
 
 ![MainMenu](https://user-images.githubusercontent.com/91074603/146052935-94134b4e-f0e9-47d9-8415-1ffec53bf43d.png)
 
+If we are an employee, asuming administrator, we can log in using our username and password. This form cannot be submitted if we dont check both username and password as we can see the disabled access button. If the log in fails, an alert will prevent the user, also when does it properly it will recieve the user with another alert.
+
+![AdminLogIn](https://user-images.githubusercontent.com/91074603/146056959-85c47db5-299a-407f-9aa9-d3aabc5b60be.png)
+
+After the user is logged, will be redirected to a main page where he can get into any of the administration pages for every entity: Employees, Ships, Maintenances, Users making it easier for the admin to navigate. He also has another dragged menu whenever he wants to move around pages without going to the main menu.
+
+![AdminMenu](https://user-images.githubusercontent.com/91074603/146057330-f820db82-5ed8-4340-8cbb-f50dd0da11e6.png)
+
+All the information in the BD is showed to the admin using presentation card for every registry. Every registry has his own options to be updated or erased, and the admin can always use the add button on the top to create another registry. He can also check for a filter in real time using the search bar, wich can be used to search for a group of registries or just one in particular.
+
+Whenever the admin tries to erase a registry, he will have an alert asking permision, making it more secure against mistakes.
+![image](https://user-images.githubusercontent.com/91074603/146058688-c80fd57b-438a-4e45-8779-9ad2feaf9695.png)
+
+If the admins wants to create a maintenance or a registry that depends on others or has specific fields, he will be asked to choose from a list of possible inputs that are searched from the database, making it easier to create registries.
+
+![CreatingMaintenance](https://user-images.githubusercontent.com/91074603/146059559-007e030e-d006-48dc-9035-ba73ac2b5b2e.png)
+
+The update forms are used the same way, so the user has it easier to manipulate the registries.
+
+![UpdateMaintenance](https://user-images.githubusercontent.com/91074603/146059894-149cc86e-015d-4b05-a904-346be192cd70.png)
+
+
+
+
 
 
 
