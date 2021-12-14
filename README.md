@@ -23,13 +23,19 @@ The App is used in two sides:
 
 ![UseCaseDiagram](https://user-images.githubusercontent.com/91074603/146038237-f663bbe3-52da-47a5-b1b1-3b2c785f5976.png)
 
-Administrators will create, upgrade and delete any registries from the DB and so deploy a worker on a maintenance for a ship, being the first and final part of the organization.
+The Database will use 4 tables: Employees, Users, Ships and Maintenances.
+
+· Employees have a Many to Many relationship with Ships, so we need the Maintenances record with the Employee who will do a service to the Ship and some other information
+
+· Employees also have a One to One relationship with Users given that the Employees can have a respective User or not.
 
 ![ERDiagram](https://user-images.githubusercontent.com/91074603/146038644-a4a485ac-9199-456e-b628-3a8f5d676337.png)
 
 
 ## User Requisites
 
+R1. Platform
+    R.1-1
 
 ## Instaling Prerequisites
 
