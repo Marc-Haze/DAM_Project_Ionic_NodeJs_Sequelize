@@ -42,7 +42,7 @@ R1. Platform
 R.2. The users will acces a home view
 
     R.2.1. Employees will be able to acces from a log in to the database information
-    R.2.2. Free Users can review the information pages and contact the company through email or the formulary
+    R.2.2. Free Users can review the information pages and contact the company through email or the form
     R.2.3. After they acces a path, they will have a main menú dragged from left
     R.2.4. This dragged menú will be different for Employees or Free Users, so Employees can navigate properly around their own views
     
@@ -52,8 +52,8 @@ R.3. There will be 4 views for the free users
     R.3.2. From the about us view, the user will have a button to check the services list
     R.3.3. The services list view would redirect the user around all the possible services given by the company
     R.3.4. A static employee view could be seen by free users
-    R.3.5. The app will have a formulary to give the users the posibilty to contact the company
-    R.5.6. The contact formulary will have an alert even for a sucessfull message or a error
+    R.3.5. The app will have a form to give the users the posibilty to contact the company
+    R.5.6. The contact form will have an alert even for a sucessfull message or a error
     R.3.6. There will be a footer with the email and telephone to contact the company
     
 R.4. Administration Views
@@ -133,3 +133,19 @@ I recommend using JustInMind to visualize it properly, but here are some example
 Once we get into the App, we will start at the home page, a simple but a usefull view that already opens two paths for common users and employee users.
 
 ![image](https://user-images.githubusercontent.com/91074603/146051993-9a0dbbf8-c8c6-4db4-8ca8-d9149eeb097a.png)
+
+Here we can choose to log in or just navigate around the information views. The dark colors in the background of every page makes easier to read, borthering less the user while scrolling, and making a good constrar with the grey-white.
+
+![InfoViews](https://user-images.githubusercontent.com/91074603/146052651-7feb9b92-dac3-496d-99bd-5d8b8560198e.png)
+
+Whenever the user uses the contact form successfull or not, the 
+
+As we can see, the App uses just the necesary elements in all their pages, making it clearly for the user wich moves can do. And even if he want to move freely, he can drag the main menu that leads to all pages at once and specifies wich pages is already, marking with another color the respective submenu so the user will never be able to get lost. Even so, the user can always tap on the logo and jump to the home page again.
+
+![MainMenu](https://user-images.githubusercontent.com/91074603/146052935-94134b4e-f0e9-47d9-8415-1ffec53bf43d.png)
+
+
+
+
+
+
