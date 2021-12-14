@@ -34,7 +34,7 @@ The Database will use 4 tables: Employees, Users, Ships and Maintenances.
 
 ## User Requisites
 
-The company will need a view to distinguish the views used by the free users and their own employees. Thos views used by the free users will need to show
+The company will need a view to distinguish the views used by the free users and their own employees. Those views used by the free users will need to show the main information of the company and a method of contact. On the other side, Employees should have a way to easily navigate around the administration pages. Both of them would need a navigation main menu for every case.
 
 R1. Platform
     R.1.1 The App will be done for Mobile platforms
@@ -98,8 +98,6 @@ After we migrate all models to the DB, we need to install al the dependencies re
     $ npm install
 
 ## Using the App
-
-
 
 Now that we own the Backend & Frontend folders, we can check the Prototype in frontend\Prototype\MobPrototype_Astican.vp 
 
