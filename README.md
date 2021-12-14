@@ -2,6 +2,11 @@
 
 A FullStack implementation of a Database using MYSQL, Sequelize as ORM, REST, and Ionic for a Mobile Client Web App. 
 
+## Introduction
+
+### User Requisites
+
+
 ### Prerequisites
 
 ·[NodeJs]: https://nodejs.org/es/download/
@@ -30,7 +35,9 @@ After we migrate all models to the DB, we need to install al the dependencies re
 
     $ npm install
 
-Now we can start using POSTMAN to check and create Ships, Employees, Maintenances and Users.
+## Using the App
+
+
 
 Now that we own the Backend & Frontend folders, we can check the Prototype in frontend\Prototype\MobPrototype_Astican.vp 
 
