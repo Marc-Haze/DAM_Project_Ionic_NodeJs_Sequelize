@@ -93,11 +93,21 @@ First we can clone the repository directly into our local workspace.
     $ git clone https://github.com/Marc-Haze/DAM_Project_Ionic_NodeJs_Sequelize.git
     
 
-After we migrate all models to the DB, we need to install al the dependencies required for this proyect:
+After cloning this repository we need to install al the dependencies required for this proyect in both frontend / backend folders:
 
-    $ npm install
+    frontend/ $ npm install
+    backend/ $ npm install
 
-## Using the App
+Its necesary a MYSQL service running, i used Xampp to deploy this service. 
+![XamppExample](https://user-images.githubusercontent.com/91074603/146048046-0a960e23-a257-4f1f-b3dc-543813d3e5e9.png)
+
+And so we need a DB called "db_astican" that can be get from [backend/database/db_astican.sql]easily create using sequelize commands. Configuration, Models and Migrations are already created so its only needed to use this commando inside backend folder to create the DB:
+
+    backend/ $ sequelize db:migrate
+
+It will create the 
+
+## Using the App (Usability)
 
 Now that we own the Backend & Frontend folders, we can check the Prototype in frontend\Prototype\MobPrototype_Astican.vp 
 
