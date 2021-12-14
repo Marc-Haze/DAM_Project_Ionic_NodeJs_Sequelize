@@ -99,9 +99,10 @@ After cloning this repository we need to install al the dependencies required fo
     backend/ $ npm install
 
 Its necesary a MYSQL service running, i used Xampp to deploy this service. 
+
 ![XamppExample](https://user-images.githubusercontent.com/91074603/146048046-0a960e23-a257-4f1f-b3dc-543813d3e5e9.png)
 
-And so we need a DB called "db_astican" that can be get from [backend/database/db_astican.sql]easily create using sequelize commands. Configuration, Models and Migrations are already created so its only needed to use this commando inside backend folder to create the DB:
+And so we need a DB called "db_astican" that can be get from "backend/database/db_astican.sql" or easily create using sequelize commands. Configuration, Models and Migrations are already done so its only needed to use this commando inside backend folder to create the DB:
 
     backend/ $ sequelize db:migrate
 
