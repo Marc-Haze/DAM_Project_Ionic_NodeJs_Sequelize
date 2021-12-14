@@ -132,4 +132,4 @@ I recommend using JustInMind to visualize it properly, but here are some example
 
 Once we get into the App, we will start at the home page, a simple but a usefull view that already opens two paths for common users and employee users.
 
-![HomeView](https://user-images.githubusercontent.com/91074603/146051500-f27220c4-6b0a-4e78-acc0-b396ab2382bb.png)
+    ![image](https://user-images.githubusercontent.com/91074603/146051993-9a0dbbf8-c8c6-4db4-8ca8-d9149eeb097a.png)
