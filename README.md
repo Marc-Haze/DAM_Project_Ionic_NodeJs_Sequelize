@@ -15,8 +15,10 @@ Aditionally, this App can be used by free users on internet as it has informatio
 The App is used in two sides: 
 
 · People off from the company that can see the bussiness information or contact Astican.
+
 · Employees from Astican who can be an administrators or workers.
-    - Administrators have full control over the app
+
+    - Administrators have full control over the ap
     - Workers can only check their respective maintenances and create/update notes inside to contact the Administrators or have a log for his own job
 
 ![UseCaseDiagram](https://user-images.githubusercontent.com/91074603/146038237-f663bbe3-52da-47a5-b1b1-3b2c785f5976.png)
