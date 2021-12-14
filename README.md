@@ -138,7 +138,10 @@ Here we can choose to log in or just navigate around the information views. The 
 
 ![InfoViews](https://user-images.githubusercontent.com/91074603/146052651-7feb9b92-dac3-496d-99bd-5d8b8560198e.png)
 
-Whenever the user uses the contact form successfull or not, he will recieve an alert corresponding 
+Whenever if the user does a mistake using the contact form or doing it succesfully, he will reacieve an alert with a message, making sure what did he failed or that his mesagges has been sent.
+
+![ContactFormAlerts](https://user-images.githubusercontent.com/91074603/146055563-52ee4ecc-9b04-4db2-b77e-967242197697.png)
+
 
 As we can see, the App uses just the necesary elements in all their pages, making it clearly for the user wich moves can do. And even if he want to move freely, he can drag the main menu that leads to all pages at once and specifies wich pages is already, marking with another color the respective submenu so the user will never be able to get lost. Even so, the user can always tap on the logo and jump to the home page again.
 
