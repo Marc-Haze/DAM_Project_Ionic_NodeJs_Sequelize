@@ -24,10 +24,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
-      filename: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
       employeeId: {
         type: Sequelize.INTEGER,
         allowNull: true,

@@ -12,19 +12,56 @@
   </ion-header>
   <ion-content id="menu-content">
     <ion-list>
-      <ion-item><ion-button class="menubuttons" (click)="loginOrJustEnter()" fill="clear" color="dark" strong="true">Conectarse</ion-button></ion-item>
-      <ion-item><ion-button class="menubuttons" (click)="goToAboutUs()" fill="clear" color="tertiary" strong="true">Sobre Nosotros</ion-button></ion-item>
-      <ion-item><ion-button class="menubuttons" (click)="goToServices()" fill="clear" color="dark" strong="true">Servicios</ion-button></ion-item>
-      <ion-item><ion-button class="menubuttons" (click)="goToProfessionals()" fill="clear" color="dark" strong="true">Profesionales</ion-button></ion-item>
-      <ion-item><ion-button class="menubuttons" (click)="goToContact()" fill="clear" color="dark" strong="true">Contáctanos</ion-button></ion-item>
-      <ion-item><ion-button class="menubuttons" (click)="goToHome()" fill="clear" color="dark" strong="true">Inicio</ion-button></ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="loginOrJustEnter()" fill="clear" color="dark" strong="true">Conectarse
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToAboutUs()" fill="clear" color="tertiary" strong="true">Sobre
+          Nosotros</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToServices()" fill="clear" color="dark" strong="true">Servicios
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToProfessionals()" fill="clear" color="dark" strong="true">
+          Profesionales</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToContact()" fill="clear" color="dark" strong="true">Contáctanos
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToHome()" fill="clear" color="dark" strong="true">Inicio</ion-button>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
 
 <!-- Main Content -->
 <ion-content>
-  <div id="titleContainer"><ion-title id="title">¿Quiénes Somos?</ion-title></div>
+  <div id="titleContainer">
+    <ion-title id="title">¿Quiénes Somos?</ion-title>
+  </div>
+  <div id="infoContainer">
+    <p>Astilleros Canarios S.A. (ASTICAN) es un astillero de reparación naval de propiedad privada con personal
+      experimentado, y cuya actividad principal es la reparación, mantenimiento y conversión de todo tipo de
+      embarcaciones, estructuras y artefactos para energías renovables marinas y unidades offshore.</p>
+  </div>
+  <div>
+    <ion-img src="./assets/images/ship.gif"></ion-img>
+  </div>
+  <div id="titleContainer">
+    <ion-title id="title">Nuestra Misión</ion-title>
+  </div>
+  <div id="infoContainer">
+    <p>Somos un equipo capaz en la gestión de proyectos de alta complejidad técnica aportando soluciones eficaces,
+      transmitiendo seguridad y construyendo confianza que generan vínculos con nuestros clientes.</p>
+  </div>
+  <div>
+    <ion-button id="servicesButton" (click)="goToServices()" shape="round" expand="full">Conocer Más</ion-button>
+  </div>
 </ion-content>
 
 

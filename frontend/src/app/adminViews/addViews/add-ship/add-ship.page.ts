@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import Swal from 'sweetalert2';
 import { Ship } from '../../models/ships/ship';
 import { ShipsService } from '../../models/ships/ships.service';
 
@@ -32,18 +33,26 @@ export class AddShipPage implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    // if (!this.myForm.valid) {
-    //   console.log('Rellene los Campos Obligatorios.')
-    //   return false;
-    // } else {
-    //   const ship: Ship = this.myForm.value;
-    //   this.shipService.createShip(ship).subscribe(() => {
-    //     this.myForm.reset;
-    //     this.router.navigateByUrl("/ships");
-    //   });
+    if (!this.myForm.valid) {
+      Swal.fire({
+        title: 'Error',
+        text: "Rellene los campos Obligatorios",
+        icon: 'warning',
+      })
+      console.log('Rellene los Campos Obligatorios.')
+      return false;
+    } else {
+      Swal.fire(
+        'Barco añadido con éxito',
+      )
+      const ship: Ship = this.myForm.value;
+      this.shipService.createShip(ship).subscribe(() => {
+        this.myForm.reset;
+        this.router.navigateByUrl("/ships").then(()=>{window.location.reload();});
+      });
 
-    // }
-    // console.log(this.myForm.value)
+    }
+    console.log(this.myForm.value)
   }
 
   // Administration Routes

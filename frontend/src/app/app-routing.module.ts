@@ -70,6 +70,26 @@ const routes: Routes = [
     path: 'add-maintenance',
     loadChildren: () => import('./adminViews/addViews/add-maintenance/add-maintenance.module').then( m => m.AddMaintenancePageModule)
   },
+  {
+    path: 'fullemployee',
+    loadChildren: () => import('./adminViews/fullViews/fullemployee/fullemployee.module').then( m => m.FullemployeePageModule)
+  },
+  {
+    path: 'mod-employee',
+    loadChildren: () => import('./adminViews/modViews/mod-employee/mod-employee.module').then( m => m.ModEmployeePageModule)
+  },
+  {
+    path: 'mod-ship',
+    loadChildren: () => import('./adminViews/modViews/mod-ship/mod-ship.module').then( m => m.ModShipPageModule)
+  },
+  {
+    path: 'mod-maintenance',
+    loadChildren: () => import('./adminViews/modViews/mod-maintenance/mod-maintenance.module').then( m => m.ModMaintenancePageModule)
+  },
+  {
+    path: 'mod-user',
+    loadChildren: () => import('./adminViews/modViews/mod-user/mod-user.module').then( m => m.ModUserPageModule)
+  },
 
 
 

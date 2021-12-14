@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -9,25 +11,59 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class ContactPage implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  myForm: FormGroup;
+  submitted = false;
+
+
+  constructor(private router: Router, private authService: AuthService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.myForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      message: ['', [Validators.required]],
+    })
   }
-  goToHome(){
+
+  get errorCtr() {
+    return this.myForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (!this.myForm.valid) {
+      Swal.fire({
+        title: 'Error',
+        text: "Rellene los todos campos",
+        icon: 'warning',
+      })
+      console.log('Rellene los Campos Obligatorios.')
+      return false;
+    } else {
+      Swal.fire('¡Su mensaje ha sido enviado!')
+      console.log('Mensaje Enviado')
+    }
+    console.log(this.myForm.value)
+  }
+
+  // Menu Navigation Routes
+  goToHome() {
     this.router.navigateByUrl("/home");
   }
-  goToAboutUs(){
+  goToAboutUs() {
     this.router.navigateByUrl("/about-us");
   }
-  goToServices(){
+  goToServices() {
     this.router.navigateByUrl("/service-list");
   }
-  goToProfessionals(){
+  goToProfessionals() {
     this.router.navigateByUrl("/professionals");
   }
-  goToContact(){
+  goToContact() {
     this.router.navigateByUrl("/contact");
   }
+
+  // Auth Service Routes
   loginOrJustEnter() {
     this.authService.isLoggedIn().then(loggedIn => {
       if (loggedIn) {
@@ -38,5 +74,8 @@ export class ContactPage implements OnInit {
       this.router.navigateByUrl('/login');
     })
   }
-  
+
+
+
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import Swal from 'sweetalert2';
 import { Employee } from '../models/employees/employee';
 import { EmployeesService } from '../models/employees/employees.service';
 
@@ -47,19 +48,40 @@ export class EmployeesPage implements OnInit {
     })
   }
 
-  deleteEmployee(idEmployee: number) {
-    this.employeeServices.deleteEmployee(idEmployee).subscribe(() => {
-      this.loadInfo();
-    });
+   deleteEmployee(id: number){
+    Swal.fire({
+      title: 'Eliminar Empleado',
+      text: "¿Está seguro de eliminar este registro?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'Ok',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.employeeServices.deleteEmployee(id).subscribe(() => {
+          this.loadInfo();
+        }, err => {
+          Swal.fire({
+            title: 'Error',
+            text: "El empleado aún tiene mantenimientos activos",
+            icon: 'warning',
+          })
+        })
+        Swal.fire(
+          'Empleado eliminado con éxito',
+        )
+      }
+    })
   }
 
   addEmployee(){
     this.router.navigateByUrl("/add-employee");
   }
-
-  modEmployee() {
-    this.router.navigateByUrl("/mod-employee");
+  fullView() {
+    this.router.navigateByUrl("/fullemployee");
   }
+
 
   //Search-Bar Functions
   setSearchInput(event){

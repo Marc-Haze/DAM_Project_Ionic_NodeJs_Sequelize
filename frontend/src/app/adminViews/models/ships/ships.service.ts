@@ -34,7 +34,7 @@ export class ShipsService {
     return this.httpClient.delete<Ship>(this.endpoint + "/" + id);
   }
 
-  createEmployee(ship: Ship): Observable<Ship>{
+  createShip(ship: Ship): Observable<Ship>{
     let bodyEncoded = new URLSearchParams();
     bodyEncoded.append("name", ship.name);
     bodyEncoded.append("type", ship.type);

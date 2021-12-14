@@ -1,4 +1,4 @@
-export class Ship {
+export interface Ship {
 	id: number;
 	name: string;
 	type: string;

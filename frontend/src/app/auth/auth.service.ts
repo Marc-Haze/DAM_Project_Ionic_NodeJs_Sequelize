@@ -53,6 +53,9 @@ export class AuthService {
 
         if (res.user) {
           await this.storage.set("token", res.access_token);
+          await this.storage.set("userId", res.user.id);
+          console.log("El token es: " + res.access_token)
+          console.log("El ID es: " + res.user.id)
         }
       })
     );
@@ -60,12 +63,13 @@ export class AuthService {
 
   async logout() {
     await this.storage.remove("token");
+    await this.storage.remove("userId");
   }
 
   async isLoggedIn() {
     // return this.authSubject.asObservable();
     let token = await this.storage.get("token");
-    if (token) { //Just check if exists. This should be checked with current date
+    if (token) { //Just check if exists.
       return true;
     }
     return false;

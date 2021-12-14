@@ -1,0 +1,100 @@
+<ion-header>
+  <app-main-menu></app-main-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-header>
+
+<!-- Slider Menu dragged from main-menu ->(ion-menu-button is inside) -->
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title id="titleMenu">Administración</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="menu-content">
+    <ion-list>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="loginOrJustEnter()" fill="clear" color="dark" strong="true">
+          Principal</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToEmployees()" fill="clear" color="tertiary" strong="true">Empleados
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToShips()" fill="clear" color="dark" strong="true">Barcos
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToMaintenances()" fill="clear" color="dark" strong="true">
+          Reparaciones</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToUsers()" fill="clear" color="dark" strong="true">Usuarios
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToConfig()" fill="clear" color="dark" strong="true">Configuración
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="logout()" fill="clear" color="dark" strong="true">Desconectarse
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Main Content -->
+<div id="containerTitle">
+  <ion-title id="title">Modificar Empleado</ion-title>
+</div>
+<ion-content>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row color="primary" class="ion-justify-content-center">
+        <ion-col size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center">
+            <div id="file-input">
+               <!-- <img [src]="imgSrc || 'http://localhost:4000/predetermined.png'"/> -->
+              <input type="file" formControlName="file" (change)="fileChange($event)"/>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </div>
+            <ion-item class="name-input">
+              <ion-input type="text" formControlName="name" placeholder="Nombre Completo"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+            <ion-item class="email-input">
+              <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+            <ion-item class="telephone-input">
+              <ion-input type="tel" formControlName="telephone" placeholder="Teléfono"></ion-input>
+            </ion-item>
+            <ion-item class="address-input">
+              <ion-input type="text" formControlName="address" placeholder="Dirección"></ion-input>
+            </ion-item>
+
+            <ion-item class="job-input">
+              <ion-input type="text" formControlName="job" placeholder="Puesto"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+          </div>
+
+          <div class="ion-text-center">
+            <ion-button id="modButton" color="success" size="large" (click)="onSubmit()"><ion-icon name="checkmark-outline"></ion-icon></ion-button>
+            <ion-button id="cancelButton" color="danger" size="large" (click)="cancel()"><ion-icon name="backspace-outline"></ion-icon></ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

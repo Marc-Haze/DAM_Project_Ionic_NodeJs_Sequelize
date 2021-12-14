@@ -1,9 +1,7 @@
 ion-content{
     --background: linear-gradient(to bottom left, #072355 60%,#6c8eac);
 }
-#titleContainer{
-  color: #072355;
-}
+
 #title{
   text-align: center;
   font-size: 180%;
@@ -17,4 +15,26 @@ ion-content{
   text-align: center;
   font-size: 150%;
   font-weight: bold;
+}
+
+#infoContainer{
+  text-align: justify;
+  background: rgba($color: #13113f, $alpha: 0.2)
+
+}
+p{
+  color: #fff;
+  font-weight: bold;
+  font-size: medium;
+  padding: 5%;
+  opacity: 100%;
+}
+
+#servicesButton{
+  text-align: center;
+  font-size: 120%;
+  font-style: oblique;
+  font-weight: bold;
+  --background: #4B5D95;
+  // linear-gradient(to bottom top, #4B5D95 30%,#74A6D2)
 }

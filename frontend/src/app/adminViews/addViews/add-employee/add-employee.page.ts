@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { threadId } from 'worker_threads';
+import Swal from 'sweetalert2';
 import { Employee } from '../../models/employees/employee';
 import { EmployeesService } from '../../models/employees/employees.service';
 
@@ -17,12 +17,13 @@ export class AddEmployeePage implements OnInit {
   submitted = false;
 
   private file: File;
+  // imgSrc: String;
 
   constructor(private router: Router, private authService: AuthService, private employeeService: EmployeesService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
-      file: [null],
+      file: [null, [Validators.required]],
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       address: [null],
@@ -36,25 +37,38 @@ export class AddEmployeePage implements OnInit {
     return this.myForm.controls;
   }
 
-  fileChange(fileChangeEvent){
-      this.file = fileChangeEvent.target.files[0];
+  fileChange(fileChangeEvent) {
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   this.imgSrc = reader.result as string;
+    // }
+
+    this.file = fileChangeEvent.target.files[0];
   }
 
   onSubmit() {
     this.submitted = true;
     if (!this.myForm.valid) {
+      Swal.fire({
+        title: 'Error',
+        text: "Rellene los campos Obligatorios",
+        icon: 'warning',
+      })
       console.log('Rellene los Campos Obligatorios.')
       return false;
     } else {
-
+      Swal.fire(
+        'Empleado añadido con éxito',
+      )
       const employee: Employee = this.myForm.value;
       this.employeeService.createEmployee(employee, this.file).subscribe(() => {
         this.myForm.reset;
-        this.router.navigateByUrl("/employees");
+        this.router.navigateByUrl("/employees").then(() => { window.location.reload(); });
       });
 
     }
     console.log(this.myForm.value)
+
   }
 
   // Administration Routes

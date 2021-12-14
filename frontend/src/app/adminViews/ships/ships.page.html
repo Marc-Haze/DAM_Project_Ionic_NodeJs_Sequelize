@@ -61,7 +61,7 @@
         <ion-card-subtitle>{{ship.type}}</ion-card-subtitle>
         <ion-card-subtitle>{{ship.client}}</ion-card-subtitle>
         <ion-card-title>{{ship.name}}</ion-card-title>  
-        <ion-button class="modButton" shape="round" color="warning" (click)="modShip(ship)">
+        <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-ship', ship]">
           <ion-icon name="brush-outline"></ion-icon>
         </ion-button>
         <ion-button class="deleteButton" shape="round" color="danger" (click)="deleteShip(ship.id)">

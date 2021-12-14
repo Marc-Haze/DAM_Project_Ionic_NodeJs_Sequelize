@@ -1,0 +1,73 @@
+ion-content{
+    --background: linear-gradient(to bottom left, #072355 60%,#6c8eac);
+    margin-top: 30%;
+}
+
+#containerTitle{
+    background-color: #072355;
+    // padding-bottom: 15%;
+    
+}
+
+#title{
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+    color: #fff;
+    // text-decoration: underline;
+    margin-top: 5%;
+    position: relative;
+}
+  
+#titleMenu{
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+form{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.service-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .description-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .state-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .dock-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+
+  .note-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .employee-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+
+  .ship-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+ion-item{
+    padding: 4%;
+}
+
+.cancelButton{
+    float: left;
+}
+
+span{
+    color: red;
+}

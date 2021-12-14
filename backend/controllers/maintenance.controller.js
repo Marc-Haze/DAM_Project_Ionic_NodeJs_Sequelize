@@ -56,7 +56,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Maintenance.findByPk(id)
+  Maintenance.findByPk(id, {include: [{model: Ship, as:"ship",  required:false}]})
     .then(data => {
       res.send(data);
     })
@@ -65,6 +65,21 @@ exports.findOne = (req, res) => {
         message: "Error retrieving Maintenance with id=" + id
       });
     });
+};
+
+// Retrieve all Motorbikes from the database.
+exports.findAllByUserId = (req, res) => {
+  const id = req.params.id;
+
+  Maintenance.findAll({ where: { userId: id } })
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: err.message || "Some error occurred while retrieving maintenances."
+          });
+      });
 };
 
 // Update a Maintenance by the id in the request

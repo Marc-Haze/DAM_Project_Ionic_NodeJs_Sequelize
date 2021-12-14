@@ -56,17 +56,19 @@
 <ion-content>
   <div *ngFor="let employee of employees">
     <ion-card *ngIf="employee.name.toLowerCase().indexOf(getSearchInput()) != -1 || employee.job.toLowerCase().indexOf(getSearchInput()) != -1">
-      <ion-card-header>
-        <ion-img src="http://localhost:4000/{{employee.filename}}" (click)="fullView(employee)"></ion-img>
+      <ion-card-header (click)="fullView(employee.id)">
+        <ion-img src="http://localhost:4000/{{employee.filename}}"></ion-img>
         <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
-        <ion-card-title (click)="fullView(employee)">{{employee.name}}</ion-card-title>  
-        <ion-button class="modButton" shape="round" color="warning" (click)="modEmployee(employee)">
+        <ion-card-title>{{employee.name}}</ion-card-title>  
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-employee', employee]">
           <ion-icon name="brush-outline"></ion-icon>
         </ion-button>
         <ion-button class="deleteButton" shape="round" color="danger" (click)="deleteEmployee(employee.id)">
           <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
-      </ion-card-header>
+      </ion-card-content>
     </ion-card> 
   </div>
 </ion-content>

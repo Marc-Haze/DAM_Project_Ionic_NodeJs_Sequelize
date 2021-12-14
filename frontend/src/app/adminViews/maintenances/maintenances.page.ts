@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import Swal from 'sweetalert2';
+import { Maintenance } from '../models/maintenances/maintenance';
+import { MaintenancesService } from '../models/maintenances/maintenances.service';
 
 @Component({
   selector: 'app-maintenances',
@@ -8,10 +11,65 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./maintenances.page.scss'],
 })
 export class MaintenancesPage implements OnInit {
+  // String used to catch the Event in the searchbar and use it to filter the 
+  public search: string = "";
 
-  constructor(private router: Router, private authService: AuthService) { }
+  public maintenances: Array<Maintenance> = [];
+  public maintenance: Maintenance;
+
+  constructor(private router: Router, private authService: AuthService, private maintenanceService: MaintenancesService) { }
 
   ngOnInit() {
+    this.loadInfo();
+  }
+
+
+  //Maintenance Services and Routes
+  loadInfo() {
+    this.maintenanceService.getAllMaintenances().subscribe((b: Array<Maintenance>) => {
+      this.maintenances = b;
+    })
+  }
+
+  deleteMaintenance(id: number){
+    Swal.fire({
+      title: 'Eliminar Mantenimiento',
+      text: "¿Está seguro de eliminar este registro?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'Ok',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.maintenanceService.deleteMaintenance(id).subscribe(() => {
+          this.loadInfo();
+        }, err => {
+          Swal.fire({
+            title: 'Error',
+            text: "El mantenimiento no se pudo eliminar",
+            icon: 'warning',
+          })
+        })
+        Swal.fire(
+          'Mantenimiento eliminado con éxito',
+        )
+      }
+    })
+  }
+
+  addMaintenance(){
+    this.router.navigateByUrl("/add-maintenance");
+  }
+
+  //Search-Bar Functions
+  setSearchInput(event){
+    console.log(event.detail.value);
+    this.search = event.detail.value;
+  }
+
+  getSearchInput(){
+    return this.search;
   }
 
    // Administration Routes

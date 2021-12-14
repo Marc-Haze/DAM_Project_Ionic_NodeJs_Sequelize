@@ -25,6 +25,7 @@ export class PrincipalPage implements OnInit {
     this.router.navigateByUrl("/maintenances");
   }
   goToUsers(){
+    console.log("ENTRANDO A USERS")
     this.router.navigateByUrl("/users");
   }
   goToConfig(){

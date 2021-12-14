@@ -1,4 +1,4 @@
-export class Employee {
+export interface Employee {
 	id: number;
 	name: string;
     email: string;
@@ -14,14 +14,4 @@ export class Employee {
         isAdmin: boolean;
         darkMode: boolean;
     };
-
-    constructor(){
-        this.id=0;
-        this.name="";
-        this.email="";
-        this.telephone=0;
-        this.address="";
-        this.job="";
-        this.file=null;
-    }
 }

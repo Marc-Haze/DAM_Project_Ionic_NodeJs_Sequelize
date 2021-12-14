@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import Swal from 'sweetalert2';
 import { Ship } from '../models/ships/ship';
 import { ShipsService } from '../models/ships/ships.service';
 
@@ -30,17 +31,38 @@ export class ShipsPage implements OnInit {
     })
   }
 
-  deleteEmployee(idShip: number) {
-    this.shipService.deleteShip(idShip).subscribe(() => {
-      this.loadInfo();
-    });
+  deleteShip(id: number){
+    Swal.fire({
+      title: 'Eliminar Barco',
+      text: "¿Está seguro de eliminar este registro?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'Ok',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.shipService.deleteShip(id).subscribe(() => {
+          this.loadInfo();
+        }, err => {
+          Swal.fire({
+            title: 'Error',
+            text: "El Barco no se pudo eliminar",
+            icon: 'warning',
+          })
+        })
+        Swal.fire(
+          'Barco eliminado con éxito',
+        )
+      }
+    })
   }
 
-  addEmployee(){
+  addShip(){
     this.router.navigateByUrl("/add-ship");
   }
 
-  modEmployee() {
+  modShip() {
     this.router.navigateByUrl("/mod-ship");
   }
 

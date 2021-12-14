@@ -26,11 +26,40 @@ ion-content{
 }
 
 form{
-    width: 50%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
+.file-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+.name-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .email-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .telephone-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+  .address-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+
+  .job-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
+
+ion-item{
+    padding: 4%;
+}
 
 label{
     color: #ffff;

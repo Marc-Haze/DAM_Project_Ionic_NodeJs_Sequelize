@@ -38,7 +38,6 @@ export class EmployeesService {
   }
 
   createEmployee(employee: Employee, file: File): Observable<Employee>{
-
     let bodyEncoded = new FormData();
     // let bodyEncoded = new URLSearchParams();
     bodyEncoded.append("name", employee.name);
@@ -60,20 +59,22 @@ export class EmployeesService {
     );
   }
 
-  modifyEmployee(employee: Employee,idEmployee: number): Observable<Employee>{
-    let bodyEncoded = new URLSearchParams();
+  modifyEmployee(employee: Employee,idEmployee: number, file: File): Observable<Employee>{
+    let bodyEncoded = new FormData();
+    // let bodyEncoded = new URLSearchParams();
     bodyEncoded.append("name", employee.name);
     bodyEncoded.append("email", employee.email);
     bodyEncoded.append("telephone", employee.telephone.toString());
     bodyEncoded.append("address", employee.address);
     bodyEncoded.append("job", employee.job);
-    bodyEncoded.append("filename", employee.file.toString());
-    
+    console.log("Comprobando el Contenido de Employee.File");
+    console.log(employee);
+    bodyEncoded.append("file", file);
 
-    const body = bodyEncoded.toString();
+    // const body = bodyEncoded.toString();
     console.log("Modifying Employee...")
     console.log(JSON.stringify(employee))
-    return this.httpClient.put<Employee>(this.endpoint + "/" + idEmployee,body, httpOptionsUsingUrlEncoded)
+    return this.httpClient.put<Employee>(this.endpoint + "/" + idEmployee, bodyEncoded, hhtpOptionsUsingFormData)
     .pipe(
       tap(_ => console.log('Employee was modified!')),
       catchError(this.handleError<Employee>('Modify Employee failed'))

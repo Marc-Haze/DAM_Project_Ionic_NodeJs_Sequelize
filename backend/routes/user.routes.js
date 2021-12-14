@@ -6,7 +6,7 @@ module.exports = app => {
   var upload = require('../multer/upload');
   
     // Create a new User
-  router.post("/", upload.single('file'), users.create);
+  router.post("/", users.create);
   
     // Retrieve all User
   router.get("/", auth.isAuthenticated, users.findAll);
@@ -15,7 +15,7 @@ module.exports = app => {
   router.get("/:id", auth.isAuthenticated, users.findOne);
   
     // Update a User with id
-  router.put("/:id", auth.isAuthenticated, upload.single('file'), users.update);
+  router.put("/:id", auth.isAuthenticated, users.update);
 
     // Sign in
   router.post("/signin", auth.signin);
