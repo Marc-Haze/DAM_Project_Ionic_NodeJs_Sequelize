@@ -167,17 +167,14 @@ The update forms are used the same way, so the user has it easier to manipulate 
 
 ![UpdateMaintenance](https://user-images.githubusercontent.com/91074603/146059894-149cc86e-015d-4b05-a904-346be192cd70.png)
 
+## References
+
+Sequelize with Node.Js: https://tomasmalio.medium.com/node-js-express-y-mysql-con-sequelize-ec0a7c0ae292
+
+Alerts in Ionic with SweetAlert2: https://sweetalert2.github.io/
+
+Stackoverflow to overcome fails: https://stackoverflow.com/questions/tagged/ionic-framework
 
 ## Conclusions
 
 This App has been a a good proyect for a student, reinforcing the knowledge in Angular(Ionic) while creating the frontend and node.js(backend) with sequelize to create the ORM. It was a bit tought in some parts but i actually liked all the way to this result, planning a few goals every week, trying to create a reusable code easier to read and understand. It still can be upgraded in some ways and utilities for the user and it will probably be updated in the future if not used as a base for next proyects.
-
-
-
-
-
-
-
-
-
-
