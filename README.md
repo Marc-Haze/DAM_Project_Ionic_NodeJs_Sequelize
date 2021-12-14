@@ -25,13 +25,12 @@ First we can clone the repository directly into our local workspace.
 
     $ git clone https://github.com/Marc-Haze/DAM_Project_Ionic_NodeJs_Sequelize.git
     
-Models and Migrations are already created but if you need to change or we want to create another DB with different models with Sequelize you can check this reference: https://tomasmalio.medium.com/node-js-express-y-mysql-con-sequelize-ec0a7c0ae292
 
-Once created the DB named db_astican, we migrate all the models using this command:
+After we migrate all models to the DB, we need to install al the dependencies required for this proyect:
 
-    $ sequelize db:migrate
+    $ npm install
 
-After we migrate all models to the DB, wen can start using POSTMAN to check and create Ships, Employees, Maintenances and Users.
+Now we can start using POSTMAN to check and create Ships, Employees, Maintenances and Users.
 
 Now that we own the Backend & Frontend folders, we can check the Prototype in frontend\Prototype\MobPrototype_Astican.vp 
 
