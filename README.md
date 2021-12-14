@@ -35,7 +35,31 @@ The Database will use 4 tables: Employees, Users, Ships and Maintenances.
 ## User Requisites
 
 R1. Platform
-    R.1-1
+    R.1.1 The App will be done for Mobile platforms
+    
+R.2. The users will acces a home view
+    R.2.1. Employees will be able to acces from a log in to the database information
+    R.2.2. Free Users can review the information pages and contact the company through email or the formulary
+    R.2.3. After they acces a path, they will have a main menú dragged from left
+    R.2.4. This dragged menú will be different for Employees or Free Users, so Employees can navigate properly around their own views
+    
+R.3. There will be 4 views for the free users
+    R.3.1. The main information view will be a page with the main concepts of the company
+    R.3.2. From the about us view, the user will have a button to check the services list
+    R.3.3. The services list view would redirect the user around all the possible services given by the company
+    R.3.4. A static employee view could be seen by free users
+    R.3.5. The app will have a formulary to give the users the posibilty to contact the company
+    R.3.6. There will be a footer with the email and telephone to contact the company
+    
+R.4. Administration Views
+    R.4.1. The administrator will have a main menú page to access Employees, Ships, Maintenances or Users
+    R.4.2. Every administration page will have a deploy for every registry
+    R.4.3. The administration page will have a searchbar to filter the registries
+    R.4.4. The administrator will be asked before erase a registry
+    R.4.5. Adding or updating the regiestry will have another view
+    R.4.6. If a employee or a ship is realizing a maintenance, it won´t be removable
+    R.4.7. An Employee can be created apart from the user in case he doesn´t have one
+
 
 ## Instaling Prerequisites
 
