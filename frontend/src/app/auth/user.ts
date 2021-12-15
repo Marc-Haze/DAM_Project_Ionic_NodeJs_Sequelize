@@ -4,4 +4,5 @@ export interface User {
 	username: string;
 	isAdmin: boolean;
 	darkMode: boolean;
+	employeeId: number;
 }

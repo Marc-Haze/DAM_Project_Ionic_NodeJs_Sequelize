@@ -46,7 +46,7 @@
 
 <!-- Main Content -->
 <div id="containerTitle">
-  <ion-title id="title">Nuevo Empleado</ion-title>
+  <ion-title id="title">Asignar Usuario</ion-title>
 </div>
 
 <ion-content>
@@ -58,26 +58,32 @@
 
           <div class="ion-text-center">
 
-            <div id="file-input">
-              <!-- <img [src]="imgSrc || 'http://localhost:4000/predetermined.png'"/> -->
-              <input type="file" formControlName="file" (change)="fileChange($event)"/>
-              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
-                Este campo es obligatorio
-              </span>
-            </div>
-
             <ion-item class="name-input">
-              <ion-input type="text" formControlName="name" placeholder="Nombre de Usuario"></ion-input>
-              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+              <ion-input type="text" formControlName="username" placeholder="Nombre de Usuario"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.username.errors?.required">
                 Este campo es obligatorio
               </span>
             </ion-item>
 
             <ion-item class="pass-input">
-              <ion-input type="text" formControlName="pass" placeholder="Contraseña"></ion-input>
-              <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+              <ion-input type="text" formControlName="password" placeholder="Contraseña"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.password.errors?.required">
                 Este campo es obligatorio
               </span>
+            </ion-item>
+
+            <ion-item class="employee-input">
+              <ion-select formControlName="employeeId" type="number" placeholder="Empleado" required>
+                <ion-select-option *ngFor="let employee of employees" value='{{employee.id}}'>{{employee.name}}</ion-select-option>
+              </ion-select>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.employeeId.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+
+            <ion-item class="role-input">
+              <ion-checkbox color="dark" formControlName="isAdmin"></ion-checkbox>
+              <ion-label>  Usuario Administrador</ion-label>
             </ion-item>
 
           </div>

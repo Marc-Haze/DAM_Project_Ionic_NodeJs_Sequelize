@@ -3,7 +3,7 @@ module.exports = app => {
   const auth = require("../controllers/auth.controller.js");
   
   var router = require("express").Router();
-  var upload = require('../multer/upload');
+
   
     // Create a new User
   router.post("/", users.create);

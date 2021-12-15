@@ -36,7 +36,7 @@ export class UsersPage implements OnInit {
 
   deleteUser(id: number) {
     Swal.fire({
-      title: 'Eliminar Empleado',
+      title: 'Eliminar Usuario',
       text: "¿Está seguro de eliminar este registro?",
       icon: 'warning',
       showCancelButton: true,
@@ -50,7 +50,7 @@ export class UsersPage implements OnInit {
         }, err => {
           Swal.fire({
             title: 'Error',
-            text: "El empleado aún tiene mantenimientos activos",
+            text: "El Usuario aún tiene su Empleado registrado",
             icon: 'warning',
           })
         })

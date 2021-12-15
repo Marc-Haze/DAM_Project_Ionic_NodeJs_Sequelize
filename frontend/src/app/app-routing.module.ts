@@ -90,6 +90,14 @@ const routes: Routes = [
     path: 'mod-user',
     loadChildren: () => import('./adminViews/modViews/mod-user/mod-user.module').then( m => m.ModUserPageModule)
   },
+  {
+    path: 'worker-maintenances',
+    loadChildren: () => import('./workerViews/worker-maintenances/worker-maintenances.module').then( m => m.WorkerMaintenancesPageModule)
+  },
+  {
+    path: 'mod-maintenances',
+    loadChildren: () => import('./workerViews/mod-maintenances/mod-maintenances.module').then( m => m.ModMaintenancesPageModule)
+  },
 
 
 

@@ -67,7 +67,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Retrieve all Motorbikes from the database.
+// Retrieve all Maintenances from the database with equals Id as employeeId.
 exports.findAllByUserId = (req, res) => {
   const id = req.params.id;
 

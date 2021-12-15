@@ -5,6 +5,7 @@ export interface AuthResponse {
         username: string;
         isAdmin: boolean;
         darkMode: boolean;
+        employeeId: number;
     },
     access_token: string
 }

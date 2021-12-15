@@ -6,12 +6,4 @@ export interface Employee {
     address: string;
     file: File;
     job: string;
-    user: {
-        id: number;
-        password: string;
-        username: string;
-        filename: string;
-        isAdmin: boolean;
-        darkMode: boolean;
-    };
 }

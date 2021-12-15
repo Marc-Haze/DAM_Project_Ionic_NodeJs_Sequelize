@@ -1,6 +1,5 @@
 // generate token using secret from process.env.JWT_SECRET
 var jwt = require('jsonwebtoken');
-const employee = require('./models/employee');
  
 // generate token and return it
 function generateToken(user) {
@@ -13,9 +12,8 @@ function generateToken(user) {
     username: user.username,
     password: user.password,
     isAdmin: user.isAdmin,
-    filename: user.filename,
     darkMode: user.darkMode,
-    
+    employeeId: user.employeeId,
   };
  
   // .env should contain a line like JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
@@ -33,8 +31,8 @@ function getCleanUser(user) {
     username: user.username,
     password: user.password,
     isAdmin: user.isAdmin,
-    filename: user.filename,
     darkMode: user.darkMode,
+    employeeId: user.employeeId,
   };
 }
  

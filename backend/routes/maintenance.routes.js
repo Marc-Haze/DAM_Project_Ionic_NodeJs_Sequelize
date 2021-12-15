@@ -11,10 +11,10 @@ module.exports = app => {
   router.get("/", maintenances.findAll);
 
   // Retrieve a single Maintenance with id
-  router.get("/:id", maintenances.findOne);
+  // router.get("/:id", maintenances.findOne);
 
-  // Retrieve all Maintenances equals an id
-  router.get("/user/:id", maintenances.findAllByUserId);
+  // Retrieve all Maintenances equals an employeeId
+  router.get("/:id", maintenances.findAllByUserId);
 
   // Update a Maintenance with id
   router.put("/:id", maintenances.update);

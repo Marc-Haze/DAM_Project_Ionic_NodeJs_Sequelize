@@ -30,6 +30,10 @@ export class MaintenancesService {
     return this.httpClient.get<Maintenance>(this.endpoint + "/" + id);
   }
 
+  getMatchedMaintenances(id: number): Observable<Maintenance[]>{
+    return this.httpClient.get<Maintenance[]>(this.endpoint + "/" + id);
+  }
+
   deleteMaintenance(id: number): Observable<Maintenance>{
     return this.httpClient.delete<Maintenance>(this.endpoint + "/" + id);
   }

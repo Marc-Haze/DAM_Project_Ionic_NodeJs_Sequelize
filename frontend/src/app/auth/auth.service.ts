@@ -28,21 +28,27 @@ export class AuthService {
       }
       //, withCredentials: true
     };
-
+    console.log(options)
     return options;
   }
 
-
-
   register(user: User): Observable<AuthResponse> {
-    return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/api/users/`, user, this.getOptions(user)).pipe(
+    console.log(user)
+    let bodyEncoded = new URLSearchParams();
+    bodyEncoded.append("username", user.username);
+    bodyEncoded.append("password", user.password);
+    bodyEncoded.append("isAdmin", user.isAdmin.toString());
+    bodyEncoded.append("darkMode", user.darkMode.toString());
+    bodyEncoded.append("employeeId", user.employeeId.toString());
+    console.log(user);
+    const body = bodyEncoded.toString();
+
+    return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/api/users/`, body, this.getOptions(user)).pipe(
       tap(async (res: AuthResponse) => {
-        
         if (res.user) {
           await this.storage.set("token", res.access_token);
         }
       })
-
     );
   }
 
@@ -51,12 +57,21 @@ export class AuthService {
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/api/users/signin`, null, this.getOptions(user)).pipe(
       tap(async (res: AuthResponse) => {
 
-        if (res.user) {
-          await this.storage.set("token", res.access_token);
-          await this.storage.set("userId", res.user.id);
-          console.log("El token es: " + res.access_token)
-          console.log("El ID es: " + res.user.id)
-        }
+        // console.log(res)
+        // //If funciton to recognize if a Role Token already exists
+        // localStorage.getItem('role')?localStorage.removeItem('role'):null;
+
+        // if (res.user) {
+        //   await this.storage.set("token", res.access_token);
+        //   await this.storage.set("employeeId", res.user.employeeId);
+        // }
+        // if (res.user.isAdmin){
+        //   localStorage.setItem('role',"admin");
+        //   return;
+        // }
+        // else{
+        //   localStorage.setItem('role', "worker")
+        // }
       })
     );
   }
@@ -64,6 +79,8 @@ export class AuthService {
   async logout() {
     await this.storage.remove("token");
     await this.storage.remove("userId");
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("userToken");
   }
 
   async isLoggedIn() {
@@ -74,6 +91,7 @@ export class AuthService {
     }
     return false;
   }
+
 
   async isAdmin(){
     let role = await this.storage.get("isAdmin");
