@@ -3,6 +3,18 @@ ion-content{
     margin-top: 30%;
 }
 
+img{
+    width: 60%;
+    float: right;
+    margin-right: 5%;
+  }
+  
+  #logOutButton{
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 5%;
+  }
+
 #containerTitle{
     background-color: #072355;
     // padding-bottom: 15%;
@@ -30,23 +42,11 @@ form{
     margin-left: auto;
     margin-right: auto;
 }
+  .note-input{
+    --background: #344C8B;
+    --color: #fff;
+  }
 
-.name-input{
-    --background: #344C8B;
-    --color: #fff;
-  }
-  .pass-input{
-    --background: #344C8B;
-    --color: #fff;
-  }
-  .employee-input{
-    --background: #344C8B;
-    --color: #fff;
-  }
-  .role-input{
-    --background: #344C8B;
-    --color: #fff;
-  }
 
 ion-item{
     padding: 4%;
@@ -56,9 +56,9 @@ label{
     color: #ffff;
     font-weight: bold;
 }
-
 .cancelButton{
     float: left;
+    margin-left: 80%;
 }
 
 span{

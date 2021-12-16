@@ -30,8 +30,10 @@ export class MaintenancesService {
     return this.httpClient.get<Maintenance>(this.endpoint + "/" + id);
   }
 
-  getMatchedMaintenances(id: number): Observable<Maintenance[]>{
-    return this.httpClient.get<Maintenance[]>(this.endpoint + "/" + id);
+  getMatchedMaintenances(employeeId: number): Observable<Maintenance[]>{
+    console.log("LLEGAMOS HASTA LA PUERTA DE SALIDA")
+    console.log("EL ID DE EMPLEADO ES: ",employeeId)
+    return this.httpClient.get<Maintenance[]>(this.endpoint + "/" + employeeId);
   }
 
   deleteMaintenance(id: number): Observable<Maintenance>{

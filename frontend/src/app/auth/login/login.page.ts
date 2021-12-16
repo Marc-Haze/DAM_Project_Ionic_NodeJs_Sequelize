@@ -38,7 +38,6 @@ export class LoginPage implements OnInit {
     };
 
     this.authService.login(user).subscribe(async (res) => {
-      console.log("HOLAAAA ", res)
       if (!res.access_token) {
         return;
       }
@@ -50,14 +49,13 @@ export class LoginPage implements OnInit {
       console.log("EL ROL ES: " + role)
 
       if (role == 'worker') {
-        console.log("A WOKERS")
+        console.log("A WORKERS")
         this.router.navigateByUrl('/worker-maintenances');
       } else {
         console.log("A PRINCIPAL");
         this.router.navigateByUrl('/principal');
       }
 
-      // this.router.navigateByUrl('/principal');
       form.reset();
     }, err => {
       Swal.fire({
@@ -71,12 +69,15 @@ export class LoginPage implements OnInit {
 
   async saveData(res) {
     console.log(res)
-    //If funciton to recognize if a Role Token already exists
+    //Recognize if a Token already exists from a previus log in and erase it
     localStorage.getItem('role') ? localStorage.removeItem('role') : null;
+    this.storage.get("token") ? this.storage.clear(): null;
+    this.storage.get("employeeId") ? this.storage.clear(): null;
 
     if (res.user) {
       await this.storage.set("token", res.access_token);
       await this.storage.set("employeeId", res.user.employeeId);
+      console.log("El IDEmployee es: ", res.user.employeeId)
     }
     if (res.user.isAdmin) {
       localStorage.setItem('role', "admin");
@@ -86,16 +87,5 @@ export class LoginPage implements OnInit {
       localStorage.setItem('role', "worker")
     }
   }
-
-  // async presentAlert(message: string) {
-  //   const alert = await this.alertController.create({
-  //     cssClass: 'my-custom-class',
-  //     header: 'Error de Credenciales',
-  //     subHeader: message,
-  //     message: ' Usuario y Contraseña no válidos.',
-  //     buttons: ['OK']
-  //   });
-  //   await alert.present();
-  // }
 
 }

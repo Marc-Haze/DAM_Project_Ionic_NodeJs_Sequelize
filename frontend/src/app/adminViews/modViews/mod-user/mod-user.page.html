@@ -1,9 +1,95 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>mod-user</ion-title>
-  </ion-toolbar>
+  <app-main-menu></app-main-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-header>
 
-<ion-content>
+<!-- Slider Menu dragged from main-menu ->(ion-menu-button is inside) -->
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title id="titleMenu">Administración</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="menu-content">
+    <ion-list>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="loginOrJustEnter()" fill="clear" color="dark" strong="true">
+          Principal</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToEmployees()" fill="clear" color="tertiary" strong="true">Empleados
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToShips()" fill="clear" color="dark" strong="true">Barcos
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToMaintenances()" fill="clear" color="dark" strong="true">
+          Reparaciones</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToUsers()" fill="clear" color="dark" strong="true">Usuarios
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="goToConfig()" fill="clear" color="dark" strong="true">Configuración
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button class="menubuttons" (click)="logout()" fill="clear" color="dark" strong="true">Desconectarse
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
+<!-- Main Content -->
+<div id="containerTitle">
+  <ion-title id="title">Mod. Usuario</ion-title>
+</div>
+<ion-content>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row color="primary" class="ion-justify-content-center">
+        <ion-col size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center">
+
+            <ion-item class="name-input">
+              <ion-input type="text" formControlName="username" placeholder="Nombre de Usuario"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.username.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+
+            <ion-item class="pass-input">
+              <ion-input type="text" formControlName="password" placeholder="Contraseña"></ion-input>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.password.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+
+            <ion-item class="employee-input">
+              <ion-select formControlName="employeeId" type="number" placeholder="Empleado" required>
+                <ion-select-option *ngFor="let employee of employees" value='{{employee.id}}'>{{employee.name}}</ion-select-option>
+              </ion-select>
+              <span class="error ion-padding" *ngIf="submitted && errorCtr.employeeId.errors?.required">
+                Este campo es obligatorio
+              </span>
+            </ion-item>
+
+            <ion-item class="role-input">
+              <ion-checkbox color="dark" formControlName="isAdmin"></ion-checkbox>
+              <ion-label>  Usuario Administrador</ion-label>
+            </ion-item>
+
+        </div>
+          <div class="ion-text-center">
+            <ion-button id="modButton" color="success" size="large" (click)="onSubmit()"><ion-icon name="checkmark-outline"></ion-icon></ion-button>
+            <ion-button id="cancelButton" color="danger" size="large" (click)="cancel()"><ion-icon name="backspace-outline"></ion-icon></ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

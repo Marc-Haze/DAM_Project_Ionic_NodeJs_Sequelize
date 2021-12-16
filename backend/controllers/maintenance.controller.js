@@ -40,7 +40,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Maintenances from the database.
 exports.findAll = (req, res) => {
-    Maintenance.findAll( {include: [{model: Ship, as:"ship",  required:false}]} )
+    Maintenance.findAll( {include: [{model: Ship, as:"ship", required:false}]} )
     .then(data => {
       res.send(data);
     })
@@ -68,10 +68,14 @@ exports.findOne = (req, res) => {
 };
 
 // Retrieve all Maintenances from the database with equals Id as employeeId.
-exports.findAllByUserId = (req, res) => {
-  const id = req.params.id;
+exports.filterByEmployeeId = (req, res) => {
+  console.log("LLEGAMOS AL FILTRO")
+  console.log(req)
+  console.log(req.params.employeeId)
+  const id = req.params.employeeId;
+  console.log("EL ID ES: ", id)
 
-  Maintenance.findAll({ where: { userId: id } })
+  Maintenance.findAll( {where: {employeeId: id }}, {include: [{model: Ship, as:"ship",  required:false}]})
       .then(data => {
           res.send(data);
       })

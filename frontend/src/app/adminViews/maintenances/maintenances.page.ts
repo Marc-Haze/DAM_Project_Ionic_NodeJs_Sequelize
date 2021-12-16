@@ -93,8 +93,17 @@ export class MaintenancesPage implements OnInit {
   loginOrJustEnter() {
     this.authService.isLoggedIn().then(loggedIn => {
       if (loggedIn) {
+        
+        let role = localStorage.getItem('role');
+      console.log("EL ROL ES: " + role)
 
+      if (role == 'worker') {
+        console.log("A WORKERS")
+        this.router.navigateByUrl('/worker-maintenances');
+      } else {
+        console.log("A PRINCIPAL");
         this.router.navigateByUrl('/principal');
+      }
         return;
       }
       this.router.navigateByUrl('/login');
@@ -102,8 +111,24 @@ export class MaintenancesPage implements OnInit {
   }
 
   logout(){
-    this.authService.logout().then(() => {
-      this.router.navigateByUrl("/home");
-    });
+    Swal.fire({
+      title: 'Desconexión',
+      text: "¿Está seguro de querer desconectarte?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'Ok',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        this.authService.logout().then(() => {
+          this.router.navigateByUrl("/home");
+        })
+        Swal.fire(
+          '¡TE HAS DESCONECTADO!',
+        )
+      }
+    })
   }
 }

@@ -58,12 +58,12 @@
     <ion-card
       *ngIf="user.username.toLowerCase().indexOf(getSearchInput()) != -1 || user.employee.name.toLowerCase().indexOf(getSearchInput()) != -1">
       <ion-card-header>
-        <!-- <ion-img src="http://localhost:4000/{{user.employee.filename}}"></ion-img> -->
+        <ion-img src="http://localhost:4000/{{user.employee.filename}}"></ion-img>
         <ion-card-title>{{user.username}}</ion-card-title>
         <ion-card-title>Administrador: {{user.isAdmin}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-button class="modButton" shape="round" color="warning">
+        <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-user', user]">
           <ion-icon name="brush-outline"></ion-icon>
         </ion-button>
         <ion-button class="deleteButton" shape="round" color="danger" (click)="deleteUser(user.id)">

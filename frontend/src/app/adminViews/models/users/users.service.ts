@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './user';
+import { Storage } from '@ionic/storage';
+import { AuthResponse } from 'src/app/auth/auth-response';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,8 +24,9 @@ const hhtpOptionsUsingFormData ={
 export class UsersService {
 
   endpoint: string = "http://localhost:4000/api/users";
+  AUTH_SERVER_ADDRESS: string = 'http://localhost:4000';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private storage: Storage,private httpClient: HttpClient) { }
 
   private getOptions(token){
 
@@ -51,53 +54,24 @@ export class UsersService {
     return this.httpClient.delete<User>(this.endpoint + "/" + id);
   }
 
-  createUser(user: User, file: File): Observable<User>{
-    let bodyEncoded = new FormData();
-    // let bodyEncoded = new URLSearchParams();
-    bodyEncoded.append("username", user.username);
-    bodyEncoded.append("password", user.password);
-    bodyEncoded.append("isAdmin", user.isAdmin.toString());
-    bodyEncoded.append("darkMode", user.darkMode.toString());
-    console.log("Comprobando el Contenido de User.File");
-    console.log(user);
-    bodyEncoded.append("file", file);
-
-    // const body = bodyEncoded.toString();
-    console.log("Creating User...")
-    console.log(JSON.stringify(user))
-    return this.httpClient.post<User>(this.endpoint, bodyEncoded, hhtpOptionsUsingFormData)
-    .pipe(
-      tap(employee => console.log('User created!')),
-      catchError(this.handleError<User>('Error occured creating User'))
-    );
+  getUserById(id, token): Observable<User>{
+    console.log(token);
+    let myOptions = this.getOptions(token);
+    console.log(myOptions);
+    return this.httpClient.get<User>(this.endpoint + "/" + id, myOptions);
   }
 
-  modifyEmployee(user: User, idUser: number, file: File): Observable<User>{
-    let bodyEncoded = new FormData();
-    // let bodyEncoded = new URLSearchParams();
-    bodyEncoded.append("username", user.username);
-    bodyEncoded.append("password", user.password);
-    bodyEncoded.append("isAdmin", user.isAdmin.toString());
-    bodyEncoded.append("darkMode", user.darkMode.toString());
-    console.log("Comprobando el Contenido de User.File");
-    console.log(user);
-    bodyEncoded.append("file", file);
-
-    // const body = bodyEncoded.toString();
-    console.log("Modifying User...")
-    console.log(JSON.stringify(user))
-    return this.httpClient.put<User>(this.endpoint + "/" + idUser, bodyEncoded, hhtpOptionsUsingFormData)
-    .pipe(
-      tap(_ => console.log('User was modified!')),
-      catchError(this.handleError<User>('Modify User failed'))
-    );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
+  // modifyUser(user: User, id: Number, token: String): Observable<User> {
+  //   console.log("EMPEZAMOS A EDITAAAAAAAR")
+  //   let bodyEncoded = new URLSearchParams();
+    
+  //   bodyEncoded.append("username", user.username);
+  //   bodyEncoded.append("password", user.password);
+  //   bodyEncoded.append("isAdmin", user.isAdmin.toString());
+  //   bodyEncoded.append("darkMode", user.darkMode.toString());
+  //   bodyEncoded.append("employeeId", user.employeeId.toString());
+  //   console.log(user);
+  //   const body = bodyEncoded.toString();
+  //   return this.httpClient.put<User>(`${this.AUTH_SERVER_ADDRESS}/api/users/` + id, body, this.getOptions(user), token);
+  // }
 }

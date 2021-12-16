@@ -1,71 +1,81 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Maintenance } from 'src/app/adminViews/models/maintenances/maintenance';
+import { MaintenancesService } from 'src/app/adminViews/models/maintenances/maintenances.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import Swal from 'sweetalert2';
-import { Employee } from '../../models/employees/employee';
-import { EmployeesService } from '../../models/employees/employees.service';
-import { User } from '../../models/users/user';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.page.html',
-  styleUrls: ['./add-user.page.scss'],
+  selector: 'app-mod-notes',
+  templateUrl: './mod-notes.page.html',
+  styleUrls: ['./mod-notes.page.scss'],
 })
-export class AddUserPage implements OnInit {
-
+export class ModNotesPage implements OnInit {
+  
   myForm: FormGroup;
   submitted = false;
+  id: any;
 
-  public employees: Array<Employee> = [];
 
-  constructor(private router: Router, private authService: AuthService, private employeeService: EmployeesService, private formBuilder: FormBuilder) { }
+  constructor(
+    public formBuilder: FormBuilder, 
+    private router: Router, 
+    private activatedRoute: ActivatedRoute, 
+    private authService: AuthService,
+     private maintenanceService: MaintenancesService) { this.id = this.activatedRoute.snapshot.paramMap.get('id');}
 
   ngOnInit() {
+    this.fetchMaintenance(this.id);
     this.myForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      isAdmin: [false],
-      darkMode: [false],
-      employeeId: [0, [Validators.required]],
+      service: [''],
+      state: [''],
+      description: [''],
+      dock: [''],
+      note: [null],
+      employeeId: [0],
+      shipId: [0],
     })
+    console.log(this.myForm);
   }
 
-  // Form Submmit
-  get errorCtr() {
-    return this.myForm.controls;
+  fetchMaintenance(id){
+    this.maintenanceService.getMaintenanceById(id).subscribe((data) => {
+      this.myForm.setValue({
+        service: data['service'],
+        state: data['state'],
+        description: data['description'],
+        dock: data['dock'],
+        note: data['note'],
+        employeeId: data['employeeId'],
+        shipId: data['shipId'],
+      });
+    })
   }
 
   onSubmit() {
     this.submitted = true;
     if (!this.myForm.valid) {
-      Swal.fire({
-        title: 'Error',
-        text: "Rellene los campos Obligatorios",
-        icon: 'warning',
-      })
       console.log('Rellene los Campos Obligatorios.')
       return false;
     } else {
-      Swal.fire(
-        'Usuario añadido con éxito',
-      )
-      const user: User = this.myForm.value;
-      console.log(user);
-      this.authService.register(user).subscribe((res) => {
-        console.log(user);
+      const maintenance: Maintenance = this.myForm.value;
+      this.maintenanceService.modifyMaintenance(maintenance, this.id).subscribe(() => {
         this.myForm.reset;
-        this.router.navigateByUrl('/users').then(() => {window.location.reload();});
+        this.router.navigateByUrl("/worker-maintenances").then(()=>{window.location.reload();});
       });
 
     }
     console.log(this.myForm.value)
   }
 
-  ionViewDidEnter() {
-    this.employeeService.getAllEmployees().subscribe((response) => {
-      this.employees = response;
-    })
+  get errorCtr() {
+    return this.myForm.controls;
+  }
+  
+  cancel(){
+    this.myForm.reset;
+    this.router.navigateByUrl("/worker-maintenances").then(()=>{window.location.reload();});
   }
 
   // Administration Routes
@@ -83,6 +93,9 @@ export class AddUserPage implements OnInit {
   }
   goToConfig() {
     this.router.navigateByUrl("/user-config");
+  }
+  goToHome(){
+    this.router.navigateByUrl("/home");
   }
 
   // Auth Service Routes
@@ -127,5 +140,4 @@ export class AddUserPage implements OnInit {
       }
     })
   }
-
 }

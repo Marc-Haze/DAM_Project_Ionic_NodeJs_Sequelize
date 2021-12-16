@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModUserPageRoutingModule } from './mod-user-routing.module';
+import { ModNotesPageRoutingModule } from './mod-notes-routing.module';
 
-import { ModUserPage } from './mod-user.page';
+import { ModNotesPage } from './mod-notes.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,11 +14,11 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ModUserPageRoutingModule,
+    ModNotesPageRoutingModule,
     ComponentsModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
   ],
-  declarations: [ModUserPage]
+  declarations: [ModNotesPage]
 })
-export class ModUserPageModule {}
+export class ModNotesPageModule {}

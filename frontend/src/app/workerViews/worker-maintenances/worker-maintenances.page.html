@@ -7,33 +7,17 @@
 <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
   <ion-header>
     <ion-toolbar color="dark">
-      <ion-title id="titleMenu">Administración</ion-title>
+      <ion-title id="titleMenu">Menú Principal</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content id="menu-content">
     <ion-list>
       <ion-item>
         <ion-button class="menubuttons" (click)="loginOrJustEnter()" fill="clear" color="dark" strong="true">
-          Principal</ion-button>
+          Inicio</ion-button>
       </ion-item>
       <ion-item>
-        <ion-button class="menubuttons" (click)="goToEmployees()" fill="clear" color="dark" strong="true">Empleados
-        </ion-button>
-      </ion-item>
-      <ion-item>
-        <ion-button class="menubuttons" (click)="goToShips()" fill="clear" color="dark" strong="true">Barcos
-        </ion-button>
-      </ion-item>
-      <ion-item>
-        <ion-button class="menubuttons" (click)="goToMaintenances()" fill="clear" color="tertiary" strong="true">
-          Reparaciones</ion-button>
-      </ion-item>
-      <ion-item>
-        <ion-button class="menubuttons" (click)="goToUsers()" fill="clear" color="dark" strong="true">Usuarios
-        </ion-button>
-      </ion-item>
-      <ion-item>
-        <ion-button class="menubuttons" (click)="goToConfig()" fill="clear" color="dark" strong="true">Configuración
+        <ion-button class="menubuttons" (click)="configUser()" fill="clear" color="dark" strong="true">Configuración
         </ion-button>
       </ion-item>
       <ion-item>
@@ -54,20 +38,21 @@
 </div>
 
 <ion-content>
-  <!-- <div *ngFor="let maintenance of maintenances">
+  <div *ngFor="let maintenance of maintenances">
     <ion-card
-      *ngIf="maintenance.ship.name.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.service.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.dock.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.state.toLowerCase().indexOf(getSearchInput()) != -1">
+      *ngIf="maintenance.employeeId == employeeId && maintenance.ship.name.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.employeeId == employeeId && maintenance.service.toLowerCase().indexOf(getSearchInput()) != -1" >
       <ion-card-header>
-        <ion-card-title>{{maintenance.ship.name}}</ion-card-title>
+        <ion-card-title>{{maintenance.ship.name}}</ion-card-title>  
         <ion-card-subtitle>{{maintenance.service}}</ion-card-subtitle>
         <ion-card-subtitle>{{maintenance.dock}}</ion-card-subtitle>
         <ion-card-subtitle>{{maintenance.state}}</ion-card-subtitle>
+        <ion-card-subtitle>{{maintenance.note}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-maintenance', maintenance]">
+        <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-notes', maintenance]">
           <ion-icon name="brush-outline"></ion-icon>
         </ion-button>
       </ion-card-content>
     </ion-card>
-  </div> -->
+  </div>
 </ion-content>

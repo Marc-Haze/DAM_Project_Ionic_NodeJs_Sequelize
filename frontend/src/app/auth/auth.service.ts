@@ -52,26 +52,29 @@ export class AuthService {
     );
   }
 
+  modify(user: User, id: Number, token: String): Observable<AuthResponse> {
+    console.log("EMPEZAMOS A EDITAAAAAAAR")
+    let bodyEncoded = new URLSearchParams();
+    
+    bodyEncoded.append("username", user.username);
+    bodyEncoded.append("password", user.password);
+    bodyEncoded.append("isAdmin", user.isAdmin.toString());
+    bodyEncoded.append("darkMode", user.darkMode.toString());
+    bodyEncoded.append("employeeId", user.employeeId.toString());
+    console.log(user);
+    const body = bodyEncoded.toString();
+    return this.httpClient.put<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/api/users/` + id, body, this.getOptions(user)).pipe(
+      tap(async (res: AuthResponse) => {
+        if (res.user) {
+          await this.storage.set("token", res.access_token);
+        }
+      })
+    );
+  }
 
   login(user: User): Observable<AuthResponse> {
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/api/users/signin`, null, this.getOptions(user)).pipe(
       tap(async (res: AuthResponse) => {
-
-        // console.log(res)
-        // //If funciton to recognize if a Role Token already exists
-        // localStorage.getItem('role')?localStorage.removeItem('role'):null;
-
-        // if (res.user) {
-        //   await this.storage.set("token", res.access_token);
-        //   await this.storage.set("employeeId", res.user.employeeId);
-        // }
-        // if (res.user.isAdmin){
-        //   localStorage.setItem('role',"admin");
-        //   return;
-        // }
-        // else{
-        //   localStorage.setItem('role', "worker")
-        // }
       })
     );
   }

@@ -54,7 +54,8 @@ const routes: Routes = [
   {
     path: 'user-config',
     loadChildren: () => import('./adminViews/user-config/user-config.module').then( m => m.UserConfigPageModule)
-  },  {
+  },
+  {
     path: 'add-employee',
     loadChildren: () => import('./adminViews/addViews/add-employee/add-employee.module').then( m => m.AddEmployeePageModule)
   },
@@ -69,10 +70,6 @@ const routes: Routes = [
   {
     path: 'add-maintenance',
     loadChildren: () => import('./adminViews/addViews/add-maintenance/add-maintenance.module').then( m => m.AddMaintenancePageModule)
-  },
-  {
-    path: 'fullemployee',
-    loadChildren: () => import('./adminViews/fullViews/fullemployee/fullemployee.module').then( m => m.FullemployeePageModule)
   },
   {
     path: 'mod-employee',
@@ -95,8 +92,8 @@ const routes: Routes = [
     loadChildren: () => import('./workerViews/worker-maintenances/worker-maintenances.module').then( m => m.WorkerMaintenancesPageModule)
   },
   {
-    path: 'mod-maintenances',
-    loadChildren: () => import('./workerViews/mod-maintenances/mod-maintenances.module').then( m => m.ModMaintenancesPageModule)
+    path: 'mod-notes',
+    loadChildren: () => import('./workerViews/mod-notes/mod-notes.module').then( m => m.ModNotesPageModule)
   },
 
 
