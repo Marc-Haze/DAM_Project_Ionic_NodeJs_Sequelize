@@ -17,6 +17,7 @@ module.exports = app => {
     // Update a User with id
   // router.put("/:id", auth.isAuthenticated, users.update);
   router.put("/:id", users.update);
+  
     // Sign in
   router.post("/signin", auth.signin);
   
