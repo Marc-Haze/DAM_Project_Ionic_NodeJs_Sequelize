@@ -57,7 +57,7 @@ export class ProfessionalsPage implements OnInit {
       showCancelButton: true,
       confirmButtonColor:'Ok',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Delete'
+      confirmButtonText: 'Ok'
     }).then((result) => {
       if (result.isConfirmed) {
         

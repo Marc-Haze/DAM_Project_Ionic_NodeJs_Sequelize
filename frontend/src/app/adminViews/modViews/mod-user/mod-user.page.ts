@@ -146,7 +146,7 @@ export class ModUserPage implements OnInit {
       showCancelButton: true,
       confirmButtonColor:'Ok',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si'
+      confirmButtonText: 'Ok'
     }).then((result) => {
       if (result.isConfirmed) {
         

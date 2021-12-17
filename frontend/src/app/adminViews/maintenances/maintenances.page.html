@@ -59,9 +59,10 @@
       *ngIf="maintenance.ship.name.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.service.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.dock.toLowerCase().indexOf(getSearchInput()) != -1 || maintenance.state.toLowerCase().indexOf(getSearchInput()) != -1">
       <ion-card-header>
         <ion-card-title>{{maintenance.ship.name}}</ion-card-title>
-        <ion-card-subtitle>{{maintenance.service}}</ion-card-subtitle>
-        <ion-card-subtitle>{{maintenance.dock}}</ion-card-subtitle>
-        <ion-card-subtitle>{{maintenance.state}}</ion-card-subtitle>
+        <ion-card-subtitle>Servicio: {{maintenance.service}}</ion-card-subtitle>
+        <ion-card-subtitle>Astillero: {{maintenance.dock}}</ion-card-subtitle>
+        <ion-card-subtitle>Estado: {{maintenance.state}}</ion-card-subtitle>
+        <ion-card-subtitle>Notas: {{maintenance.note}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-maintenance', maintenance]">

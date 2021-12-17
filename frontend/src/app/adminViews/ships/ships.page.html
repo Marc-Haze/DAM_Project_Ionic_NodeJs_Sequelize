@@ -58,8 +58,8 @@
   <div *ngFor="let ship of ships">
     <ion-card *ngIf="ship.name.toLowerCase().indexOf(getSearchInput()) != -1 || ship.type.toLowerCase().indexOf(getSearchInput()) != -1 || ship.client.toLowerCase().indexOf(getSearchInput()) != -1">
       <ion-card-header>
-        <ion-card-subtitle>{{ship.type}}</ion-card-subtitle>
-        <ion-card-subtitle>{{ship.client}}</ion-card-subtitle>
+        <ion-card-subtitle>Tipo: {{ship.type}}</ion-card-subtitle>
+        <ion-card-subtitle>Cliente: {{ship.client}}</ion-card-subtitle>
         <ion-card-title>{{ship.name}}</ion-card-title>  
         <ion-button class="modButton" shape="round" color="warning" [routerLink]="['/mod-ship', ship]">
           <ion-icon name="brush-outline"></ion-icon>
